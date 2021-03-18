@@ -21,27 +21,27 @@ public class register extends AppCompatActivity {
 
     public void clickMenu(View view){
         //open drawer
-        MainActivity.openDrawer(drawerLayout);
+        home_main_activity.openDrawer(drawerLayout);
     }
 
     public void clickLogo(View view){
         //close drawer
-        MainActivity.closeDrawer(drawerLayout);
+        home_main_activity.closeDrawer(drawerLayout);
     }
 
     public void clickHome(View view){
         //redirect activity to home
-        MainActivity.redirectActivity(this, MainActivity.class);
+        home_main_activity.redirectActivity(this, home_main_activity.class);
     }
 
     public void clickProfile(View view){
         //redirect activity to profile
-        MainActivity.redirectActivity(this,profile.class);
+        home_main_activity.redirectActivity(this,profile.class);
     }
 
     public void clickAboutus(View view){
         //redirect activity to about us
-        MainActivity.redirectActivity(this,aboutus.class);
+        home_main_activity.redirectActivity(this,aboutus.class);
     }
 
 
@@ -53,13 +53,13 @@ public class register extends AppCompatActivity {
 
     public void clickLogout(View view){
         //close app
-        MainActivity.logout(this);
+        home_main_activity.logout(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //close drawer
-        MainActivity.closeDrawer(drawerLayout);
+        home_main_activity.closeDrawer(drawerLayout);
     }
 }

@@ -10,20 +10,23 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class home_main_activity extends AppCompatActivity {
 
 
     //initialize variables
     DrawerLayout drawerLayout;
+    TextView studentReg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.home_activity_main);
 
         //assing variable
         drawerLayout = findViewById(R.id.drawer_layout);
+
     }
 
     public void clickMenu(View view){
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickProfile(View view){
-        //rederect to activity to dashboard
+        //rederect to activity to profile
         redirectActivity(this, profile.class);
     }
 
@@ -127,4 +130,33 @@ public class MainActivity extends AppCompatActivity {
         closeDrawer(drawerLayout);
     }
 
+    //student register activity
+    public void clickStudentRegister(View view) {
+        Intent intentstudentReg = new Intent(this,studentRegisterPage.class);
+        startActivity(intentstudentReg);
+
+    }
+    //make assingment
+    public void clickMakeAssignment(View view) {
+        Intent intentMakeAssingment = new Intent(this,makeAssingment.class);
+        startActivity(intentMakeAssingment);
+    }
+
+    //check assingment
+    public void clickCheckAssignment(View view) {
+        Intent intentCheckAssingment = new Intent(this,checkAssingment.class);
+        startActivity(intentCheckAssingment);
+    }
+
+    //add marks
+    public void clickAddMarks(View view) {
+        Intent intentAddMark = new Intent(this,addMark.class);
+        startActivity(intentAddMark);
+    }
+
+    //techers recorde book
+    public void clickCheckTeacherRecordBook(View view) {
+        Intent intentTeacherRecordBook = new Intent(this,TeacherRecordBook.class);
+        startActivity(intentTeacherRecordBook);
+    }
 }

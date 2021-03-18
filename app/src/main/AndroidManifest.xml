@@ -9,11 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".register"></activity>
+        <activity android:name=".makeAssingment"></activity>
+        <activity android:name=".checkAssingment" />
+        <activity android:name=".addMark" />
+        <activity android:name=".TeacherRecordBook" />
+        <activity android:name=".studentRegisterPage" />
+        <activity android:name=".register" />
         <activity android:name=".aboutus" />
         <activity android:name=".profile" />
         <activity android:name=".activityDrower" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".home_main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
