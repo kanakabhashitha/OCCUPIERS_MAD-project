@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class home_main_activity extends AppCompatActivity {
+public class main_activity extends AppCompatActivity {
 
 
     //initialize variables
@@ -22,7 +22,7 @@ public class home_main_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity_main);
+        setContentView(R.layout.activity_main);
 
         //assing variable
         drawerLayout = findViewById(R.id.drawer_layout);

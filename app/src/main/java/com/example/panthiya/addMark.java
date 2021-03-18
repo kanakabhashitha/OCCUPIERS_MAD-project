@@ -15,7 +15,7 @@ public class addMark extends AppCompatActivity {
     }
 
     public void clickBack(View view) {
-        Intent intentback = new Intent(this,home_main_activity.class);
+        Intent intentback = new Intent(this, main_activity.class);
         startActivity(intentback);
     }
 }

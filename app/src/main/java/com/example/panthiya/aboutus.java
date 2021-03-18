@@ -23,27 +23,27 @@ public class aboutus extends AppCompatActivity {
 
     public void clickMenu(View view){
         //open drawer
-        home_main_activity.openDrawer(drawerLayout);
+        main_activity.openDrawer(drawerLayout);
     }
 
     public void clickLogo(View view){
         //close drawer
-        home_main_activity.closeDrawer(drawerLayout);
+        main_activity.closeDrawer(drawerLayout);
     }
 
     public void clickHome(View view){
         //redirect activity to home
-        home_main_activity.redirectActivity(this, home_main_activity.class);
+        main_activity.redirectActivity(this, main_activity.class);
     }
 
     public void clickProfile(View view){
         //redirect activity to profile
-        home_main_activity.redirectActivity(this,profile.class);
+        main_activity.redirectActivity(this,profile.class);
     }
 
     public void clickRegister(View view){
         //redirect activity to profile
-        home_main_activity.redirectActivity(this,register.class);
+        main_activity.redirectActivity(this,register.class);
     }
 
     public void clickAboutus(View view){
@@ -54,14 +54,14 @@ public class aboutus extends AppCompatActivity {
 
     public void clickLogout(View view){
         //close app
-        home_main_activity.logout(this);
+        main_activity.logout(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //close drawer
-        home_main_activity.closeDrawer(drawerLayout);
+        main_activity.closeDrawer(drawerLayout);
     }
 
 }

@@ -18,7 +18,7 @@
         <activity android:name=".aboutus" />
         <activity android:name=".profile" />
         <activity android:name=".activityDrower" />
-        <activity android:name=".home_main_activity">
+        <activity android:name=".main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
