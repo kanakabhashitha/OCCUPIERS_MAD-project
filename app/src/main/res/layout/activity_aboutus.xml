@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".MainActivity">
+    tools:context=".aboutus">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,10 +19,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="HOME"
+            android:text="About us"
             android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"/>
+
 
     </LinearLayout>
 
@@ -30,12 +31,11 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/white">
+        android:background="@android:color/white">
 
         <include
             layout="@layout/main_nav_drower"/>
 
     </RelativeLayout>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
