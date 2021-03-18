@@ -21,6 +21,13 @@
             android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MA"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
 
 
     </LinearLayout>
