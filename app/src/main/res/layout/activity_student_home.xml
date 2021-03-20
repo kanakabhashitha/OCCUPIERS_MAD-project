@@ -6,9 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".main_activity">
-
-
+    tools:context=".student_home">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,9 +28,9 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="20dp"
-                android:contentDescription="@string/image_descrip"
-                android:scaleX="1.97"
-                android:scaleY="1.37"
+                android:contentDescription="@string/image_descrip_student_home"
+                android:scaleX="1.9"
+                android:scaleY="1.3"
                 android:src="@drawable/welcom" />
 
         </LinearLayout>
@@ -48,7 +46,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
             android:gravity="center_vertical"
-            android:onClick="clickStudentRegister"
+            android:onClick="clickViewStudentAssignment"
             >
 
 
@@ -59,9 +57,9 @@
                 android:layout_weight="2"
                 android:background="@drawable/background1"
                 android:padding="10dp"
-                android:text="@string/student_register_button"
+                android:text="@string/view_assingment_button_student_home"
                 android:textAlignment="center"
-                android:textColor="@android:color/holo_purple"
+                android:textColor="@color/black"
 
                 android:textStyle="bold" />
         </LinearLayout>
@@ -74,7 +72,7 @@
             android:layout_marginRight="12dp"
             android:layout_marginLeft="12dp"
             android:gravity="center_vertical"
-            android:onClick="clickMakeAssignment">
+            android:onClick="clickViewMarkAssignment">
 
 
             <TextView
@@ -83,9 +81,9 @@
                 android:layout_weight="2"
                 android:background="@drawable/background1"
                 android:padding="10dp"
-                android:text="@string/make_assinment_button"
+                android:text="@string/view_marks_button_student_home"
                 android:textAlignment="center"
-                android:textColor="@android:color/holo_purple"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -97,7 +95,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="25dp"
             android:gravity="center_vertical"
-            android:onClick="clickCheckAssignment">
+            android:onClick="clickMyNote">
 
 
             <TextView
@@ -106,9 +104,9 @@
                 android:layout_weight="2"
                 android:background="@drawable/background1"
                 android:padding="10dp"
-                android:text="@string/check_assinment_button"
+                android:text="@string/my_note_button_student_home"
                 android:textAlignment="center"
-                android:textColor="@android:color/holo_purple"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -120,7 +118,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="25dp"
             android:gravity="center_vertical"
-            android:onClick="clickAddMarks">
+            android:onClick="clickMyprofile">
 
 
             <TextView
@@ -129,34 +127,13 @@
                 android:layout_weight="2"
                 android:background="@drawable/background1"
                 android:padding="10dp"
-                android:text="@string/add_marks_button"
+                android:text="@string/my_profile_button_student_home"
                 android:textAlignment="center"
-                android:textColor="@android:color/holo_purple"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginRight="12dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="25dp"
-            android:gravity="center_vertical"
-            android:onClick="clickCheckTeacherRecordBook">
 
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:background="@drawable/background1"
-                android:padding="10dp"
-                android:text="@string/teachers_record_book_button"
-                android:textAlignment="center"
-                android:textColor="@android:color/holo_purple"
-                android:textStyle="bold" />
-        </LinearLayout>
 
 
 
@@ -177,6 +154,5 @@
 
 
     </RelativeLayout>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

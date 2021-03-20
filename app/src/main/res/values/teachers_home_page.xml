@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="image_descrip">welcomeImage</string>
+    <string name="student_register_button">Student Register</string>
+    <string name="make_assinment_button">Make Assignment</string>
+    <string name="check_assinment_button">Check Assignment</string>
+    <string name="add_marks_button">Add Marks</string>
+    <string name="teachers_record_book_button">Teacher\'s Record Book</string>
+
+
+</resources>
