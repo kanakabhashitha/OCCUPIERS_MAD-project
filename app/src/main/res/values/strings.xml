@@ -1,4 +1,31 @@
 <resources>
+    <string name="app_name" translatable="false">panthiya</string>
+
+
+    <string name="report" translatable="false">Report</string>
+    <string name="addmarks" translatable="false">Add Marks</string>
+    <string name="panthikamare" translatable="false">Panthi Kamare</string>
+    <string name="it19956268" translatable="false">IT19956268</string>
+    <string name="maduka" translatable="false">Maduka</string>
+    <string name="mad" translatable="false">MAD</string>
+    <string name="menuicon" translatable="false">Menu Icon</string>
+    <string name="arrowback" translatable="false">Arrowback</string>
+    <string name="marksicon" translatable="false">Marksicon</string>
+    <string name="dotmenu" translatable="false">Dotmenu</string>
+
+
+    <!-- activity. table -->
+
+    <string name="save">save</string>
+    <string name="savereg">Save</string>
+    <string name="assignmentno">Assignment NO</string>
+    <string name="assignmentnoinput">Assignment NO</string>
+    <string name="studentid">Student Id</string>
+    <string name="studentidinput">Student Id</string>
+    <string name="firstname">First Name</string>
+    <string name="firstnameinput">First Name</string>
+
+
     <string name="app_name">panthiya</string>
     <!-- TODO: Remove or change this placeholder text -->
 

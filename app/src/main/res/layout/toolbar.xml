@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="75dp"
+
+        android:background="@android:color/holo_purple"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
+
+        >
+
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="92dp"
+            android:foregroundTint="#0C090C"
+            android:onClick="clickMenu"
+            android:src="@drawable/backarrow"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Panthi Kamare"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:src="@drawable/menuicon" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

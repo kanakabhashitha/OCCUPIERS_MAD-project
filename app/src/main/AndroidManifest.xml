@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
+        <activity android:name=".tableone"></activity>
+        <activity android:name=".MainActivity">
         <activity android:name=".my_note_student"></activity>
         <activity android:name=".view_marks_student" />
         <activity android:name=".add_assingment_student" />
