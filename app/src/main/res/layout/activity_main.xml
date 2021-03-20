@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:id="@+id/drawer_layout"
     tools:context=".main_activity">
 
@@ -180,3 +181,15 @@
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
+=======
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="176dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
