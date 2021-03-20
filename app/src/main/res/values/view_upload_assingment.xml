@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="make_assingment_button_view_assingment">Make Assignment</string>
+    <string name="view_assignment_button_view_assingment">View Assignment</string>
+    <string name="image_view_assingment">assignment image</string>
+    <string name="assinment_no__button_view_assingment_hint">Assignment number</string>
+    <string name="assinment_go__button_view_assingm">GO</string>
+    <string name="assinment_no_display_view_assingm">Assignment 01</string>
+    <string name="assinment_subject_display_view_assingm">MAD</string>
+    <string name="assinment_more_details_btn_view_assingm">button</string>
+</resources>

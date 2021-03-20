@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.panthiya">
 
     <application
@@ -9,7 +10,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".makeAssingment"></activity>
+        <activity android:name=".view_assignment_student_view"></activity>
+        <activity android:name=".student_home"></activity>
+        <activity android:name=".check_assignment"></activity>
+        <activity android:name=".view_upload_assignment" />
+        <activity android:name=".login_page" />
+        <activity android:name=".makeAssingment">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
         <activity android:name=".checkAssingment" />
         <activity android:name=".addMark" />
         <activity android:name=".TeacherRecordBook" />
@@ -17,7 +32,6 @@
         <activity android:name=".register" />
         <activity android:name=".aboutus" />
         <activity android:name=".profile" />
-        <activity android:name=".activityDrower" />
         <activity android:name=".main_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,18 +6,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.View;
 
-public class register extends AppCompatActivity {
+public class login_page extends AppCompatActivity {
     DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login_page);
         //assing variable
         drawerLayout =  findViewById(R.id.drawer_layout);
     }
-
-
 
     public void clickMenu(View view){
         //open drawer
@@ -34,8 +32,6 @@ public class register extends AppCompatActivity {
         main_activity.redirectActivity(this, login_page.class);
     }
 
-
-
     public void clickAboutus(View view){
         //redirect activity to about us
         main_activity.redirectActivity(this,aboutus.class);
@@ -47,7 +43,6 @@ public class register extends AppCompatActivity {
         //recreate activity
         recreate();
     }
-
     public void clickLogout(View view){
         //close app
         main_activity.logout(this);
