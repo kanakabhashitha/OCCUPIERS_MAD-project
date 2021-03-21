@@ -54,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@drawable/blackoutline"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         tools:layout_editor_absoluteX="0dp">
 
@@ -64,8 +65,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/cardview_light_background"
-            android:fontFamily="sans-serif-condensed-medium"
+            android:background="#00FFFF"
+
             android:gravity="center"
             android:text="@string/report"
             android:textColor="@android:color/holo_purple"
@@ -77,8 +78,8 @@
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/cardview_shadow_end_color"
-            android:fontFamily="sans-serif-condensed-medium"
+            android:background="#D1D0CE"
+
             android:gravity="center"
             android:text="@string/addmarks"
             android:textColor="@android:color/holo_purple"
