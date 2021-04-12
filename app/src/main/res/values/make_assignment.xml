@@ -13,7 +13,7 @@
     <string name="Description_hint">Enter description</string>
     <string name="upload_text">Upload File</string>
     <string name="upload_icon">Upload icon</string>
-    <string name="drag_text">Drag and Drop to File here</string>
+    <string name="drag_text">Upload to file here</string>
 
 
 </resources>

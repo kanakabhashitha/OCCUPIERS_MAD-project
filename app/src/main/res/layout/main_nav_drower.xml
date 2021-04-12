@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4bd9f9"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_margin="16dp"
-        android:contentDescription="@string/nave_image"
-        android:onClick="clickLogo"
-        android:src="@drawable/logo" />
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:background="#0eacdb"
+     android:orientation="vertical">
+     <ImageView
+         android:layout_width="match_parent"
+         android:layout_height="120dp"
+         android:layout_margin="16dp"
+         android:contentDescription="@string/nave_image"
+         android:onClick="clickLogo"
+         android:src="@drawable/logo" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Panthi_Kamare_text"
-        android:textAlignment="center"
-        android:textColor="#636363"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="16dp"
+         android:fontFamily="@font/aclonica"
+         android:text="@string/Panthi_Kamare_text"
+         android:textAlignment="center"
+         android:textColor="@color/white"
+         android:textSize="28sp"
+         android:textStyle="bold" />
+
+
+ </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="2dp"
         android:layout_marginBottom="16dp"
-        android:background="#636363"/>
+        android:background="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,20 +47,27 @@
         android:gravity="center_vertical"
         android:onClick="clickHome">
 
+
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:padding="12dp"
-            android:text="@string/nave_home_text" />
+            android:text="@string/nave_home_text"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_marginEnd="48dp"
             android:contentDescription="@string/nave_home_icon"
-            android:src="@drawable/homei_con" />
+            android:src="@drawable/homei_con"
+            app:tint="@color/white" />
 
     </LinearLayout>
 
@@ -70,14 +88,21 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:padding="12dp"
-            android:text="@string/nave_profile_text" />
+            android:text="@string/nave_profile_text"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_marginEnd="48dp"
             android:contentDescription="@string/nave_profile_icon"
-            android:src="@drawable/profileicon" />
+            android:src="@drawable/profileicon"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:tint="@color/white" />
 
     </LinearLayout>
 
@@ -95,14 +120,18 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:padding="12dp"
-            android:text="@string/nave_aboutus_text" />
+            android:text="@string/nave_aboutus_text"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_marginEnd="48dp"
             android:contentDescription="@string/nave_aboutus_icon"
-            android:src="@drawable/abouticon" />
+            android:src="@drawable/abouticon"
+            app:tint="@color/white" />
 
     </LinearLayout>
 
@@ -122,14 +151,18 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:padding="12dp"
-            android:text="@string/nave_logut_text" />
+            android:text="@string/nave_logut_text"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
             android:layout_marginEnd="48dp"
             android:contentDescription="@string/nave_logut_icon"
-            android:src="@drawable/logout_icon" />
+            android:src="@drawable/logout_icon"
+            app:tint="@color/white" />
 
     </LinearLayout>
 
