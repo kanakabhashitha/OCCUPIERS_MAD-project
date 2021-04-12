@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:background="@android:color/holo_purple"
-    android:padding="12dp">
+    android:background="#4bd9f9"
+    android:padding="15dp">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:foregroundTint="#0C090C"
         android:onClick="clickMenu"
         android:src="@drawable/menuicon"
@@ -20,6 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/aclonica"
         android:text="Panthi Kamare"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -27,8 +28,8 @@
         android:textStyle="bold" />
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
 
         android:src="@drawable/logo" />
 

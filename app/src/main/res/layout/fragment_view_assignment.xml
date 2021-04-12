@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".check_assignment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/back_cover_01"
+    tools:context=".viewAssignmentFragment">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/back_cover_02">
+        android:orientation="vertical">
 
-        <include
-            layout="@layout/backwerdmanu"/>
-
+        </LinearLayout>
 
 
 
@@ -54,7 +52,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:background="@drawable/swearchbackgound1"
-                        android:hint="@string/assinment_no__button_check_assingment"
+                        android:hint="@string/assinment_no__button_check_assingment_student"
                         android:textAlignment="center" />
 
                     <ImageView
@@ -75,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/swearchbackgound2"
                         android:padding="1dp"
-                        android:text="@string/assinment_go__button_view_assingm"
+                        android:text="@string/assinment_go__button_check_assingment_student"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="23.5sp" />
@@ -107,7 +105,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="70dp"
-                        android:contentDescription="@string/image_check_assingment"
+                        android:contentDescription="@string/image_check_assingment_student"
                         android:src="@drawable/assignment" />
                 </LinearLayout>
 
@@ -133,7 +131,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/assinment_no_display_check_assingment"
+                            android:text="@string/assinment_no_display_check_assingment_student"
                             android:textColor="@android:color/holo_purple"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -152,7 +150,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/assinment_student_display_check_assingment"
+                            android:text="@string/assinment_date_display_check_assingment_student"
                             android:textColor="@android:color/holo_purple"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -170,7 +168,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/assinment_subject_display_check_assingment"
+                            android:text="@string/assinment_subject_display_check_assingment_student"
                             android:textColor="@android:color/holo_purple"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -203,15 +201,8 @@
             </LinearLayout>
 
 
-
-
-
-
-
-
         </LinearLayout>
 
 
-    </LinearLayout>
 
-</androidx.drawerlayout.widget.DrawerLayout>
+</FrameLayout>

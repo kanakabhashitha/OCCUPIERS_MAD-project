@@ -10,7 +10,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
+
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class main_activity extends AppCompatActivity {
 
@@ -22,11 +29,27 @@ public class main_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //remove titel bar
+        requestWindowFeature(getWindow().FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_main);
 
         //assing variable
         drawerLayout = findViewById(R.id.drawer_layout);
 
+        ImageSlider imageSlider = findViewById(R.id.slider);
+
+        List<SlideModel>slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.welcom, "Welcome To Panthiya"));
+        slideModels.add(new SlideModel(R.drawable.welcomtow, "The Class Management System"));
+        slideModels.add(new SlideModel(R.drawable.welcometree, "Knowledge Is Power"));
+        slideModels.add(new SlideModel(R.drawable.welcomfore, "Make Assignment Easily"));
+        slideModels.add(new SlideModel(R.drawable.welcomesix, "Check You Score"));
+
+        imageSlider.setImageList(slideModels, true);
     }
 
     public void clickMenu(View view){
@@ -144,7 +167,7 @@ public class main_activity extends AppCompatActivity {
 
     //check assingment
     public void clickCheckAssignment(View view) {
-        Intent intentCheckAssingment = new Intent(this,checkAssingment.class);
+        Intent intentCheckAssingment = new Intent(this,check_assignment.class);
         startActivity(intentCheckAssingment);
     }
 
@@ -159,4 +182,13 @@ public class main_activity extends AppCompatActivity {
         Intent intentTeacherRecordBook = new Intent(this,TeacherRecordBook.class);
         startActivity(intentTeacherRecordBook);
     }
+
+
+
+
+
+
+
+
+
 }

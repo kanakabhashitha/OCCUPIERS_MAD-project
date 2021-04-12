@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="make_assingment_button_check_assingment">Make Assignment</string>
-    <string name="view_assignment_button_check_assingment">View Assignment</string>
+
     <string name="image_check_assingment">assignment image</string>
     <string name="assinment_no__button_check_assingment">Assignment number</string>
     <string name="assinment_go__button_check_assingment">GO</string>
