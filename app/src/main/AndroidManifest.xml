@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.panthiya">
 
-    <uses-permission android:name="android.permission.INTERNET">
-
-    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".edit_assingment"></activity>
+        <activity android:name=".add_assingment_student"></activity>
+        <activity android:name=".student_aboutUs" />
+        <activity android:name=".student_profile" />
+        <activity android:name=".edit_assingment" />
         <activity android:name=".view_assignment_student_view" />
-        <activity android:name=".student_home" />
+        <activity android:name=".student_home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".check_assignment" />
         <activity android:name=".view_upload_assignment" />
         <activity android:name=".login_page" />
@@ -37,11 +44,14 @@
         <activity android:name=".aboutus" />
         <activity android:name=".profile" />
         <activity android:name=".main_activity">
-            <intent-filter>
+
+            <!--
+                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
 
         <meta-data
