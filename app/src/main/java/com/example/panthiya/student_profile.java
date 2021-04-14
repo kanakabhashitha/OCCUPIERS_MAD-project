@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-public class aboutus extends AppCompatActivity {
+public class student_profile extends AppCompatActivity {
 
     //initialize variable
     DrawerLayout drawerLayout;
@@ -15,15 +15,19 @@ public class aboutus extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //remove titel bar
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_aboutus);
+
+        setContentView(R.layout.activity_student_profile);
 
         //assing variable
         drawerLayout =  findViewById(R.id.drawer_layout);
-
     }
+
+
 
     public void clickMenu(View view){
         //open drawer
@@ -37,23 +41,19 @@ public class aboutus extends AppCompatActivity {
 
     public void clickHome(View view){
         //redirect activity to home
-        main_activity.redirectActivity(this, main_activity.class);
+        main_activity.redirectActivity(this, student_home.class);
     }
 
-    public void clickProfile(View view){
+    public void clickStudentProfile(View view){
         //redirect activity to profile
-        main_activity.redirectActivity(this,profile.class);
+        main_activity.redirectActivity(this,student_profile.class);
     }
 
-    public void clickRegister(View view){
-        //redirect activity to profile
-        main_activity.redirectActivity(this,register.class);
-    }
 
     public void clickAboutus(View view){
 
         //recreate activity
-        recreate();
+        main_activity.redirectActivity(this,student_aboutUs.class);
     }
 
     public void clickLogout(View view){
@@ -61,11 +61,11 @@ public class aboutus extends AppCompatActivity {
         main_activity.logout(this);
     }
 
+
     @Override
     protected void onPause() {
         super.onPause();
         //close drawer
         main_activity.closeDrawer(drawerLayout);
     }
-
 }

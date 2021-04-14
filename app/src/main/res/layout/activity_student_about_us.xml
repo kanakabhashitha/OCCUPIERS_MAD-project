@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
-    android:background="@drawable/back_cover_02"
-    tools:context=".register">
+    android:id="@+id/student_drawer_layout"
+    tools:context=".student_aboutUs">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,26 +19,11 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Teacher's Register"
+            android:layout_height="match_parent"
+            android:text="student About us"
             android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="activity_register.xml"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="register java file eka"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
 
 
     </LinearLayout>
@@ -50,7 +35,7 @@
         android:background="@android:color/white">
 
         <include
-            layout="@layout/main_login__nav_drower"/>
+            layout="@layout/main_student_nav_drower"/>
 
     </RelativeLayout>
 
