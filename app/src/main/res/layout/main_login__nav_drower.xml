@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#4bd9f9"
     android:orientation="vertical">
 
     <ImageView
@@ -10,90 +11,133 @@
         android:layout_height="120dp"
         android:layout_margin="16dp"
         android:onClick="clickLogo"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Panthi Kamare"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/aclonica"
+        android:text="@string/Panthi_Kamare_text"
         android:textAlignment="center"
-        android:textColor="#636363"/>
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="2dp"
         android:layout_marginBottom="16dp"
-        android:background="#636363"/>
+        android:background="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="clickRegister">
+        android:onClick="clickRegister"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="Register"
             android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Teacher's Register" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:tint="@color/white"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/registericon"/>
+            android:src="@drawable/registericon" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="clickAboutus">
+        android:onClick="clickLogin"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="About Us"
             android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Login" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:tint="@color/white"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/abouticon"/>
+            android:src="@drawable/login_icon" />
 
     </LinearLayout>
+
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:onClick="clickAboutus"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="About Us" />
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:tint="@color/white"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/abouticon" />
+
+    </LinearLayout>
+
+    -->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="clickLogout">
+        android:onClick="clickLogout"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="Logout"
             android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Logout" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            app:tint="@color/white"
             android:layout_marginEnd="48dp"
-            android:src="@drawable/logout_icon"/>
+            android:src="@drawable/logout_icon" />
 
     </LinearLayout>
 

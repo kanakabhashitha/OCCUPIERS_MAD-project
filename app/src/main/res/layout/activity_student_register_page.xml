@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_cover_01"
     tools:context=".studentRegisterPage">
 
     <LinearLayout
@@ -21,6 +22,16 @@
             android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="activity_student_register_page.xml"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="studentRegisterPage java"/>
 
 
     </LinearLayout>

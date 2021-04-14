@@ -170,9 +170,13 @@ public class student_home extends AppCompatActivity {
     }
 
     public void clickViewMarkAssignment(View view) {
+        Intent intentadd_view_marks_student = new Intent(this,view_marks_student.class);
+        startActivity(intentadd_view_marks_student);
     }
 
     public void clickMyNote(View view) {
+        Intent intentmy_note_student = new Intent(this,my_note_student.class);
+        startActivity(intentmy_note_student);
     }
 
     public void clickMyprofile(View view) {

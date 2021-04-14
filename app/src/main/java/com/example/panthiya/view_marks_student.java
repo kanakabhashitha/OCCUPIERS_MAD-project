@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-public class studentRegisterPage extends AppCompatActivity {
+public class view_marks_student extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +18,15 @@ public class studentRegisterPage extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
-        setContentView(R.layout.activity_student_register_page);
+
+        setContentView(R.layout.activity_view_marks_student);
 
     }
+
 
     public void clickBack(View view) {
-        Intent intentback = new Intent(this, main_activity.class);
+        Intent intentback = new Intent(this, student_home.class);
         startActivity(intentback);
     }
+
 }

@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_cover_01"
     android:id="@+id/drawer_layout"
     tools:context=".profile">
 
@@ -18,11 +19,21 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="profile"
+            android:layout_height="wrap_content"
+            android:text="teacher's profile"
             android:textSize="50sp"
             android:textStyle="bold"
             android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="activity_profile.xml"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="profile java"/>
 
 
     </LinearLayout>
