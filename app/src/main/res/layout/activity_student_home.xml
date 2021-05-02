@@ -117,7 +117,7 @@
                 android:fontFamily="@font/bubblegum_sans"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
-                android:onClick="clickStudentAddAssignment"
+                android:onClick="clickMyAssignmentLog"
                 android:textStyle="bold" />
 
 
