@@ -5,21 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class preview_assingment extends AppCompatActivity {
 
     private ImageView aImageView;
-    private TextView aNumberEt, aSubjectEt, aDeadLinEd, aDescriptionEt, aAddTimeEt, aUpdateTimeEt;
+    private TextView aNumberEt, aSubjectEt, aDeadLinEd, aDescriptionEt;
     Button saveInfo;
-    ImageButton pri_image;
+
 
 
     private String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp;
@@ -46,10 +44,6 @@ public class preview_assingment extends AppCompatActivity {
         aSubjectEt = findViewById(R.id.assignmentSubject);
         aDeadLinEd = findViewById(R.id.assignemtDeadLine);
         aDescriptionEt = findViewById(R.id.assignemtDescription);
-        aAddTimeEt = findViewById(R.id.add_date_time);
-        aUpdateTimeEt = findViewById(R.id.update_date);
-
-        pri_image = findViewById(R.id.pre_T_btn);
 
         saveInfo = findViewById(R.id.save_btn);
 
@@ -68,21 +62,6 @@ public class preview_assingment extends AppCompatActivity {
         aDeadLinEd.setText(deadLine);
         aDescriptionEt.setText(description);
         aImageView.setImageURI(imageUri);
-        aAddTimeEt.setText(addTimeStamp);
-        aUpdateTimeEt.setText(updateTimeStamp);
-
-
-
-        pri_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent priImage = new Intent(preview_assingment.this, Pri_image.class);
-                priImage.putExtra("IMAGE_pri", imageUri.toString());
-                startActivity(priImage);
-            }
-        });
-
     }
     public void clickBack(View view) {
         Intent intentback = new Intent(this, makeAssingment.class);

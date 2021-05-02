@@ -14,11 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".edit_add_student_teacher"></activity>
-        <activity android:name=".add_student_form" />
-        <activity android:name=".edit_teacher_pro" />
-        <activity android:name=".Pri_image" />
-        <activity android:name=".check_student_answer_view" />
+        <activity android:name=".check_student_answer_view"></activity>
         <activity android:name=".anstudent_answer_view" />
         <activity android:name=".edit_student_assingment" />
         <activity android:name=".my_assignment_log" />
@@ -34,26 +30,26 @@
         <activity android:name=".view_assignment_student_view" />
         <activity android:name=".student_home">
 
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+            -->
         </activity>
         <activity android:name=".check_assignment" />
         <activity android:name=".view_upload_assignment" />
         <activity android:name=".login_page">
 
             <!--
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             -->
+
         </activity>
         <activity android:name=".makeAssingment">
 
@@ -72,16 +68,11 @@
         <activity android:name=".aboutus" />
         <activity android:name=".profile" />
         <activity android:name=".main_activity">
-
-<!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            -->
-
         </activity> <!-- crop image working -->
         <meta-data
             android:name="preloaded_fonts"

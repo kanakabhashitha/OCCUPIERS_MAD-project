@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="make_assingment_button_edit">Make Assignment</string>
+    <string name="view_assingment_button_edit">View Assignment</string>
+    <string name="edit_icon">edit icon</string>
+    <string name="edit_text">Update</string>
+    <string name="AssignmentNO_text_edit">Assignment NO</string>
+    <string name="AssignmentNO_hint_edit">Enter assignment number</string>
+    <string name="Subject_text_edit">Subject</string>
+    <string name="Subject_hint_edit">Enter subject</string>
+    <string name="Description_text_edit">Description</string>
+    <string name="Description_hint_edit">Enter description</string>
+    <string name="upload_text_edit">Upload File</string>
+    <string name="file_icon">file icon</string>
+    <string name="upload_file_name">assingment_01.pdf</string>
+
+</resources>
