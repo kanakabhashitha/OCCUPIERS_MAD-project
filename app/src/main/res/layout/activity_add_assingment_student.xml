@@ -5,62 +5,195 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_cover_01"
     tools:context=".add_assingment_student">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-
-        >
+        android:orientation="vertical">
 
         <include
             layout="@layout/backwerdmanu"/>
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:padding="3dp"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/MaterialAlertDialog.MaterialComponents.Title.Icon"
+                app:icon="@drawable/saveico"
+                android:id="@+id/save_btn"
+                android:textStyle="bold"
+                android:text="@string/save_text"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:orientation="vertical">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#27CAEF"
-                app:tabIndicatorColor="#0408F6"
-                app:tabSelectedTextColor="#0408F6"
-                app:tabTextAppearance="@style/TextAppearance.AppCompat.Title"
-                app:tabTextColor="@color/white">
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
 
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab1"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Make Assignment" />
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/AssignmentNO_text"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View Assignment" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/background1"
+                    android:hint="@string/AssignmentNO_hint"
+                    android:id="@+id/assignemtNo"
+                    android:inputType="number"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
-
-            </com.google.android.material.tabs.TabLayout>
-
-
-            <androidx.viewpager.widget.ViewPager
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/viewpager"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/Subject_text"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/background1"
+                    android:hint="@string/Subject_hint"
+                    android:id="@+id/assignmentSubject"
+                    android:inputType="textAutoCorrect|text"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical"
+                android:scrollbarAlwaysDrawHorizontalTrack="false">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/mk_date"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/background1"
+                    android:hint="@string/mk_date_hint"
+                    android:id="@+id/assignemtDeadLine"
+                    android:inputType="date"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/Description_text"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@drawable/background1"
+                    android:hint="Enter description"
+                    android:id="@+id/assignemtDescription"
+                    android:inputType="textMultiLine"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/upload_text"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
 
 
+                <ImageView
+                    android:layout_marginTop="5dp"
+                    android:layout_width="110dp"
+                    android:layout_height="120dp"
+                    android:id="@+id/answerImage"
+                    android:layout_gravity="center"
+                    android:src="@drawable/upload_assingment_btnicon"/>
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
     </LinearLayout>
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

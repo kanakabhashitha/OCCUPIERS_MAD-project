@@ -164,9 +164,9 @@ public class student_home extends AppCompatActivity {
         startActivity(intentview_assignment_student_view);
     }
 
-    public void clickStudentAddAssignment(View view) {
-        Intent intentadd_assingment_student = new Intent(this,add_assingment_student.class);
-        startActivity(intentadd_assingment_student);
+    public void clickMyAssignmentLog(View view) {
+        Intent intentadd_my_assignment_log = new Intent(this,my_assignment_log.class);
+        startActivity(intentadd_my_assignment_log);
     }
 
     public void clickViewMarkAssignment(View view) {

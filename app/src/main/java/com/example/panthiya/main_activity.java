@@ -24,7 +24,7 @@ public class main_activity extends AppCompatActivity {
 
     //initialize variables
     DrawerLayout drawerLayout;
-    TextView studentReg;
+    TextView MKassing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,8 @@ public class main_activity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_main);
+
+
 
         //assing variable
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -50,6 +52,8 @@ public class main_activity extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.welcomesix, "Check You Score"));
 
         imageSlider.setImageList(slideModels, true);
+
+
     }
 
     public void clickMenu(View view){
