@@ -96,6 +96,7 @@
                 android:layout_weight="0.5"
                 android:background="@drawable/background_btn_2"
                 android:onClick="clickMakeAssignment"
+                android:id="@+id/mkassingmet"
                 android:text="@string/make_assinment_button"
                 android:gravity="center_horizontal"
                 android:paddingTop="75dp"

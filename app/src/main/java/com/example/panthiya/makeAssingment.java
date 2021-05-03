@@ -1,25 +1,27 @@
 package com.example.panthiya;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import android.os.Bundle;
+import android.widget.Adapter;
 
-import com.google.android.material.tabs.TabItem;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 public class makeAssingment extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private TabItem tab1,tab2;
-    public PageAdapter pagerAdapter;
+    FloatingActionButton fab;
+
+    RecyclerView mRecyclerView;
+    DatabaseHelperMKASG databaseHelper;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,41 +36,54 @@ public class makeAssingment extends AppCompatActivity {
         setContentView(R.layout.activity_make_assingment);
 
 
-        //tabcontroler
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tab1 = (TabItem) findViewById(R.id.tab1);
-        tab2 = (TabItem) findViewById(R.id.tab2);
-        viewPager = findViewById(R.id.viewpager);
+        mRecyclerView = findViewById(R.id.recylceView);
+        databaseHelper = new DatabaseHelperMKASG(this);
 
-        pagerAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pagerAdapter);
+        showRercord();
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        fab = findViewById(R.id.addFabButton);
+
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
+            public void onClick(View v) {
 
-                if(tab.getPosition() == 0){
-                    pagerAdapter.notifyDataSetChanged();
-                } else if(tab.getPosition() == 1) {
-                    pagerAdapter.notifyDataSetChanged();
-                }
-            }
+                //create a new activity
+                //startActivity(new Intent(MainActivity.this, AddRecordActivity.class));
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+                Intent intent = new Intent(makeAssingment.this, Add_assignment_form_teacher.class);
+                intent.putExtra("EditMode", false);
+                intent.putExtra("ViewMode", false);
+                startActivity(intent);
             }
         });
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
+
+    private void showRercord() {
+
+        Adapter_mkasg adapter = new Adapter_mkasg(makeAssingment.this, databaseHelper.getAllData(ConstantsMKASG.A_ADD_TIMESTAMP + " DESC"));
+        //because last add record is show on top
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showRercord();
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == event.KEYCODE_BACK){
+            moveTaskToBack(true);
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
 
     public void clickBack(View view) {
         Intent intentback = new Intent(this, main_activity.class);

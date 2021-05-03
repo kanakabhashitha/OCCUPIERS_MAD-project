@@ -3,7 +3,7 @@
     <string name="make_assingment_button_edit">Make Assignment</string>
     <string name="view_assingment_button_edit">View Assignment</string>
     <string name="edit_icon">edit icon</string>
-    <string name="edit_text">Edit</string>
+    <string name="edit_text">Update</string>
     <string name="AssignmentNO_text_edit">Assignment NO</string>
     <string name="AssignmentNO_hint_edit">Enter assignment number</string>
     <string name="Subject_text_edit">Subject</string>
