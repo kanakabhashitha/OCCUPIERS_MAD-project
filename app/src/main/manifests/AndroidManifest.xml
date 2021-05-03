@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".check_student_answer_view"></activity>
+        <activity android:name=".Pri_image"></activity>
+        <activity android:name=".check_student_answer_view" />
         <activity android:name=".anstudent_answer_view" />
         <activity android:name=".edit_student_assingment" />
         <activity android:name=".my_assignment_log" />
