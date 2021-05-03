@@ -9,10 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
-
 import android.widget.Button;
-
-
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -203,16 +200,10 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
     class Holder extends RecyclerView.ViewHolder {
 
         ImageView assignmentImage;
-<<<<<<< HEAD
         TextView subject, number, deadLine, description, addtime, update_time;
         ImageButton editButton, deleteButton, viewButton;
 
 
-=======
-        TextView subject, number, deadLine, description, addtime;
-        ImageButton editButton, deleteButton, viewButton;
-
->>>>>>> 60f4df1 (assingment part crud create with modify ui desings)
         public Holder(@NonNull View itemView) {
             super(itemView);
 
@@ -225,11 +216,7 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
             deleteButton = itemView.findViewById(R.id.deletebtn);
             viewButton = itemView.findViewById(R.id.viewbtn);
             addtime = itemView.findViewById(R.id.add_date_time);
-<<<<<<< HEAD
             update_time = itemView.findViewById(R.id.update_date);
-=======
-
->>>>>>> 60f4df1 (assingment part crud create with modify ui desings)
         }
     }
 
