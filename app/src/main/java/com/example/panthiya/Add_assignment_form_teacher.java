@@ -2,24 +2,18 @@ package com.example.panthiya;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,13 +26,8 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.text.DateFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Add_assignment_form_teacher extends AppCompatActivity {
 
@@ -46,15 +35,11 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     private ImageView aImageView;
     private EditText aNumberEt, aSubjectEt, aDeadLinEd, aDescriptionEt;
     Button saveInfo;
-    public static DatePickerDialog.OnDateSetListener setListener;
+
+
 
     private String number, subject, deadLine, description, timeStamp;
     private DatabaseHelperMKASG dbHelper;
-
-    private Pattern pattern;
-    private Matcher matcher;
-    private static final String DATE_PATTERN =
-            "(0?[1-9]|1[012]) [/.-] (0?[1-9]|[12][0-9]|3[01]) [/.-] ((19|20)\\d\\d)";
 
 
     private static final int CAMERA_REQUEST_CODE = 100;
@@ -67,13 +52,6 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     private String[] storagePermissions;
 
     private Uri imageUri;
-
-    //calender variable
-    Calendar calendar = Calendar.getInstance();
-    final  int year = calendar.get(Calendar.YEAR);
-    final  int month = calendar.get(Calendar.MONTH);
-    final  int day = calendar.get(Calendar.DAY_OF_MONTH);
-
 
 
     @Override
@@ -99,61 +77,6 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-
-
-        //calender dialog view
-
-        aDeadLinEd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        Add_assignment_form_teacher.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth
-                        ,setListener,year,month,day
-                );
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
-            }
-        });
-
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-                String date = day+"/"+month+"/"+year;
-                aDeadLinEd.setText(date);
-            }
-        };
-
-        setListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-                String date = day+"/"+month+"/"+year;
-                aDeadLinEd.setText(date);
-            }
-        };
-
-        aDeadLinEd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        Add_assignment_form_teacher.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int day) {
-                        month = month + 1;
-                        String date = day+"/"+month+"/"+year;
-                        aDeadLinEd.setText(date);
-                    }
-                }, year,month,day);
-                datePickerDialog.show();
-            }
-        });
-
-
-
-
-
-
         //initiate database object in main funtion
         dbHelper = new DatabaseHelperMKASG(this);
 
@@ -171,12 +94,15 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
                 //click the save button insert data to db
                 getData();
+
+                startActivity(new Intent(Add_assignment_form_teacher.this, makeAssingment.class));
+                Toast.makeText(Add_assignment_form_teacher.this, "Add Successfull", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
 
 
-    //validate and insert db
     private void getData() {
 
         number = "" + aNumberEt.getText().toString().trim();
@@ -184,196 +110,26 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         deadLine = "" + aDeadLinEd.getText().toString().trim();
         description = "" + aDescriptionEt.getText().toString().trim();
         timeStamp = "" + getDateTime();
-        boolean dateVlid = validateDate();
-        boolean numValidate = vlidateAsiingmentNo();
 
-
-        //validate uinput data
-        try{
-            System.out.println("date__"+dateVlid);
-            if(numValidate !=true){
-                Toast.makeText(getApplicationContext(), "Please enter the assignment Number", Toast.LENGTH_SHORT).show();
-            }
-            else if(TextUtils.isEmpty(subject)){
-                aSubjectEt.setError("This field is required");
-                Toast.makeText(getApplicationContext(), "Please enter the assignment Subject", Toast.LENGTH_SHORT).show();
-            }else if( ( (dateVlid != true) ) ){
-                Toast.makeText(getApplicationContext(), "Please enter the valid assignment Dead Line", Toast.LENGTH_SHORT).show();
-            }else if(TextUtils.isEmpty(description)){
-                Toast.makeText(getApplicationContext(), "Please enter the assignment Description", Toast.LENGTH_SHORT).show();
-            }else if(imageUri == null){
-                Toast.makeText(getApplicationContext(), "Please enter the assignment Image", Toast.LENGTH_SHORT).show();
-            }else{
-
-
-                dbHelper.insertInfo(
-                        "" + number,
-                        "" + subject,
-                        "" + deadLine,
-                        "" + description,
-                        "" + imageUri,
-                        "" + timeStamp,
-                        "" + timeStamp
-                );
-
-                startActivity(new Intent(Add_assignment_form_teacher.this, makeAssingment.class));
-                Toast.makeText(Add_assignment_form_teacher.this, "Add Successfull", Toast.LENGTH_SHORT).show();
-            }
-        }catch (Exception e){
-            Toast.makeText(getApplicationContext(), ""+e, Toast.LENGTH_SHORT).show();
-        }
+        dbHelper.insertInfo(
+                "" + number,
+                "" + subject,
+                "" + deadLine,
+                "" + description,
+                "" + imageUri,
+                "" + timeStamp,
+                "" + timeStamp
+        );
 
         //Toast.makeText(this, "Record added to id: "+id, Toast.LENGTH_SHORT).show();
         //startActivity(new Intent(Add_assignment_form_teacher.this, makeAssingment.class));
     }
 
-
-    //get system date
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
     }
-
-    // full date validate if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
-
-    //date validation
-   /* public Boolean checkDateFormat1(String date){
-        System.out.println("d__"+date);
-        if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
-            return false;
-
-        SimpleDateFormat format=new SimpleDateFormat("d/M/yyyy");
-        try {
-            format.parse(date);
-            return true;
-        }catch (ParseException e){
-            return false;
-        }
-    }*/
-
-
-
-    private boolean validateDate(){
-        if(deadLine.length() == 0){
-            aDeadLinEd.setError("This field is required");
-            return false;
-        }
-        if(deadLine.length() != 0 ){
-            String date = "" + aDeadLinEd.getText().toString().trim();
-
-            String day = date.split("/")[0];
-            String month = date.split("/")[1];
-            int year = Integer.parseInt(date.split("/")[2]);
-
-            if((0 < Integer.parseInt(day) && Integer.parseInt(day) < 32) && (0 < Integer.parseInt(month) && Integer.parseInt(month) < 13) && (Calendar.getInstance().get(Calendar.YEAR) <= year ) ) {
-                if (day.equals("31") &&
-                        (month.equals("4") || month.equals("6") || month.equals("9") ||
-                                month.equals("11") || month.equals("04") || month.equals("06") ||
-                                month.equals("09"))) {
-                    aDeadLinEd.setError("Choose a month that has 31 days");
-                    return false; // only 1,3,5,7,8,10,12 has 31 days
-                } else if (month.equals("2") || month.equals("02")) {
-                    //leap year
-                    if (year % 4 == 0) {
-                        if (day.equals("30") || day.equals("31")) {
-                            aDeadLinEd.setError("Date format is Invalid");
-                            return false;
-                        } else {
-                            aDeadLinEd.setError("Date format is Invalid");
-                            return true;
-                        }
-                    } else {
-                        if (day.equals("29") || day.equals("30") || day.equals("31")) {
-                            aDeadLinEd.setError("Date format is Invalid");
-                            return false;
-                        } else {
-                            aDeadLinEd.setError("Date format is Invalid");
-                            return true;
-                        }
-                    }
-                }
-            }else {
-                aDeadLinEd.setError("Date format is Invalid");
-                return false;
-            }
-        }
-
-        if(deadLine.length() == 0){
-            aDeadLinEd.setError("This field is required");
-            return false;
-        }
-
-        if(deadLine.length() == 0){
-            aDeadLinEd.setError("This field is required");
-            return false;
-        }
-
-        if(deadLine.length() == 0){
-            aDeadLinEd.setError("This field is required");
-            return false;
-        }
-       /* System.out.println("" + tr_donePoints.getText().toString().trim());
-        if(tr_donePoints.length() == 0){
-            tr_donePoints.setError("This field is required");
-            return false;
-        }
-        String donePoints = "" + tr_donePoints.getText().toString().trim();
-        if(tr_donePoints.length() != 0){
-            if(!(0 < Integer.parseInt(donePoints) && Integer.parseInt(donePoints) < 11)){
-                tr_donePoints.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }
-        if(tr_exceptedPoint.length() == 0){
-            tr_exceptedPoint.setError("This field is required");
-            return false;
-        }
-
-        String expPoints = "" + tr_exceptedPoint.getText().toString().trim();
-        if(tr_exceptedPoint.length() != 0){
-            if(!(0 < Integer.parseInt(expPoints) && Integer.parseInt(expPoints) < 11)){
-                tr_exceptedPoint.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }*/
-
-        return true;
-    }
-
-
-    private boolean vlidateAsiingmentNo(){
-        if(number.length() == 0){
-            aNumberEt.setError("This field is required");
-            return false;
-        }
-        String number = "" + aNumberEt.getText().toString().trim();
-        if(number.length() != 0){
-            if(!(0 < Integer.parseInt(number) && Integer.parseInt(number) < 100)){
-                aNumberEt.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }
-        return true;
-    }
-
-
-  /*  private boolean vlidateAsiingmentNo(){
-        if(number.length() == 0){
-            aNumberEt.setError("This field is required");
-            return false;
-        }
-        String number = "" + aNumberEt.getText().toString().trim();
-        if(number.length() != 0){
-            if(!(0 < Integer.parseInt(number) && Integer.parseInt(number) < 100)){
-                aNumberEt.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }
-        return true;
-    }*/
-
-
 
     private void imagePickDialog() {
 
@@ -409,6 +165,8 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
         builder.create().show();
     }
+
+
 
     private void pickFromStorage() {
         //get image from gallary
@@ -535,6 +293,9 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
+
 
 
 
