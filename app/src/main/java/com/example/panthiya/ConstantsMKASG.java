@@ -4,7 +4,7 @@ public class ConstantsMKASG {
     //db name
     public static final String DB_NAME = "PANTHIYA_INFO_DB";
     //db version
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 5;
     //db table
     public static final String TABLE_NAME = "TEACHERS_ASSIGNMENT_INFO_TABLE";
     public static final String TABLE_NAME_2= "STUDENT_ASSIGNMENT_INFO_TABLE";

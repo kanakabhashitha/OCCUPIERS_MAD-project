@@ -14,13 +14,12 @@ import com.google.android.material.tabs.TabLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class TeacherRecordBook extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private TabItem tab1,tab2;
-    public PageAdapter6 pagerAdapter;
+    Button tr_add_btn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,39 +32,16 @@ public class TeacherRecordBook extends AppCompatActivity {
 
         setContentView(R.layout.activity_teacher_record_book);
 
-        //tabcontroler
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tab1 = (TabItem) findViewById(R.id.tab1);
-        tab2 = (TabItem) findViewById(R.id.tab2);
-        viewPager = findViewById(R.id.viewpager);
+        tr_add_btn = findViewById(R.id.tr_add_btn);
 
-        pagerAdapter = new PageAdapter6(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pagerAdapter);
-
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tr_add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-
-                if(tab.getPosition() == 0){
-                    pagerAdapter.notifyDataSetChanged();
-                } else if(tab.getPosition() == 1) {
-                    pagerAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onClick(View v) {
+                Intent intent = new Intent(TeacherRecordBook.this, teachers_record_book_add.class);
+                startActivity(intent);
             }
         });
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
 
