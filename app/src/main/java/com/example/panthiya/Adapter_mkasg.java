@@ -197,6 +197,11 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
         return arrayList.size();
     }
 
+
+
+
+
+
     class Holder extends RecyclerView.ViewHolder {
 
         ImageView assignmentImage;

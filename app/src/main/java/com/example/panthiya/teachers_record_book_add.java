@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,6 +25,10 @@ public class teachers_record_book_add extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //remove titel bar
+        requestWindowFeature(getWindow().FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_teachers_record_book_add);
 
         //initiate database object in main funtion
@@ -42,7 +47,7 @@ public class teachers_record_book_add extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getData();
-                //startActivity(new Intent(teachers_record_book_add.this, TeacherRecordBook.class));
+                startActivity(new Intent(teachers_record_book_add.this, TeacherRecordBook.class));
                 Toast.makeText(teachers_record_book_add.this, "Add Successfull", Toast.LENGTH_SHORT).show();
             }
         });
@@ -58,7 +63,7 @@ public class teachers_record_book_add extends AppCompatActivity {
         exceptionPoints = "" + tr_exceptedPoint.getText().toString().trim();
         timeStamp = "" + getDateTime();
 
-        dbHelper.insertInfo_TRB(
+        long id = dbHelper.insertInfo_TRB(
                 "" + date,
                 "" + subject,
                 "" + titel,
@@ -68,6 +73,7 @@ public class teachers_record_book_add extends AppCompatActivity {
                 "" + timeStamp,
                 "" + timeStamp
         );
+
 
     }
 

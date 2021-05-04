@@ -8,6 +8,8 @@ public class ConstantsMKASG {
     //db table
     public static final String TABLE_NAME = "TEACHERS_ASSIGNMENT_INFO_TABLE";
     public static final String TABLE_NAME_2= "STUDENT_ASSIGNMENT_INFO_TABLE";
+
+
     //table column
     public static final String A_ID = "ID";
     public static final String A_NUMBER = "NUMBER";
@@ -27,6 +29,7 @@ public class ConstantsMKASG {
     public static final String S_IMAGE = "IMAGE";
     public static final String S_ADD_DATEnTIME= "ADD_DATE_AND_TIME";
     public static final String S_UPDATE_DATEnTIME = "UPDATE_DATE_AND_TIME";
+
 
     //CREATE QUERY for table
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("

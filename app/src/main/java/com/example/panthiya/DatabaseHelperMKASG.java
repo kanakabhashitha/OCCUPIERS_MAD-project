@@ -108,9 +108,6 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
 
 
-
-
-
     //arryList table 1
     public ArrayList<Model_mkasg> getAllData(String orderBy){
 
