@@ -79,7 +79,7 @@
                         android:layout_height="35dp"
                         android:background="@drawable/background1"
                         android:hint="DD/MM/YYYY"
-                        android:inputType="number"
+                        android:inputType="date"
                         android:id="@+id/tr_date"
                         android:textAlignment="center" />
                 </LinearLayout>
