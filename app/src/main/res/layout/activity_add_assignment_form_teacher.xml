@@ -127,7 +127,7 @@
                     android:background="@drawable/background1"
                     android:hint="@string/mk_date_hint"
                     android:id="@+id/assignemtDeadLine"
-                    android:inputType="date"
+
                     android:textAlignment="center" />
             </LinearLayout>
 

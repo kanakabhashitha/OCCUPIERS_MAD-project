@@ -2,18 +2,24 @@ package com.example.panthiya;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,8 +32,13 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Add_assignment_form_teacher extends AppCompatActivity {
 
@@ -35,8 +46,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     private ImageView aImageView;
     private EditText aNumberEt, aSubjectEt, aDeadLinEd, aDescriptionEt;
     Button saveInfo;
-
-
+    public static DatePickerDialog.OnDateSetListener setListener;
 
     private String number, subject, deadLine, description, timeStamp;
     private DatabaseHelperMKASG dbHelper;
@@ -52,6 +62,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     private String[] storagePermissions;
 
     private Uri imageUri;
+
 
 
     @Override
@@ -77,6 +88,61 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
+        Calendar calendar = Calendar.getInstance();
+        final  int year = calendar.get(Calendar.YEAR);
+        final  int month = calendar.get(Calendar.MONTH);
+        final  int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        aDeadLinEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        Add_assignment_form_teacher.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth
+                        ,setListener,year,month,day
+                );
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String date = day+"/"+month+"/"+year;
+                aDeadLinEd.setText(date);
+            }
+        };
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String date = day+"/"+month+"/"+year;
+                aDeadLinEd.setText(date);
+            }
+        };
+
+        aDeadLinEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        Add_assignment_form_teacher.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month + 1;
+                        String date = day+"/"+month+"/"+year;
+                        aDeadLinEd.setText(date);
+                    }
+                }, year,month,day);
+                datePickerDialog.show();
+            }
+        });
+
+
+
+
+
         //initiate database object in main funtion
         dbHelper = new DatabaseHelperMKASG(this);
 
@@ -94,10 +160,6 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
                 //click the save button insert data to db
                 getData();
-
-                startActivity(new Intent(Add_assignment_form_teacher.this, makeAssingment.class));
-                Toast.makeText(Add_assignment_form_teacher.this, "Add Successfull", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -110,20 +172,47 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         deadLine = "" + aDeadLinEd.getText().toString().trim();
         description = "" + aDescriptionEt.getText().toString().trim();
         timeStamp = "" + getDateTime();
+        boolean dateVlid1 = checkDateFormat1(deadLine);
+        boolean dateVlid2 = checkDateFormat2(deadLine);
 
-        dbHelper.insertInfo(
-                "" + number,
-                "" + subject,
-                "" + deadLine,
-                "" + description,
-                "" + imageUri,
-                "" + timeStamp,
-                "" + timeStamp
-        );
+
+        try{
+            System.out.println("date__"+dateVlid2);
+            if(TextUtils.isEmpty(number)){
+                Toast.makeText(getApplicationContext(), "Please enter the assignment Number", Toast.LENGTH_SHORT).show();
+            }
+            else if(TextUtils.isEmpty(subject)){
+                Toast.makeText(getApplicationContext(), "Please enter the assignment Subject", Toast.LENGTH_SHORT).show();
+            }else if( ( (dateVlid1 != true) || (dateVlid2 != false) ) && ( (dateVlid1 != false) || (dateVlid2 != true) )  ){
+                Toast.makeText(getApplicationContext(), "Please enter the assignment Dead Line", Toast.LENGTH_SHORT).show();
+            }else if(TextUtils.isEmpty(description)){
+                Toast.makeText(getApplicationContext(), "Please enter the assignment Description", Toast.LENGTH_SHORT).show();
+            }else if(imageUri == null){
+                Toast.makeText(getApplicationContext(), "Please enter the assignment Image", Toast.LENGTH_SHORT).show();
+            }else{
+
+
+                dbHelper.insertInfo(
+                        "" + number,
+                        "" + subject,
+                        "" + deadLine,
+                        "" + description,
+                        "" + imageUri,
+                        "" + timeStamp,
+                        "" + timeStamp
+                );
+
+                startActivity(new Intent(Add_assignment_form_teacher.this, makeAssingment.class));
+                Toast.makeText(Add_assignment_form_teacher.this, "Add Successfull", Toast.LENGTH_SHORT).show();
+            }
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), ""+e, Toast.LENGTH_SHORT).show();
+        }
 
         //Toast.makeText(this, "Record added to id: "+id, Toast.LENGTH_SHORT).show();
         //startActivity(new Intent(Add_assignment_form_teacher.this, makeAssingment.class));
     }
+
 
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -165,6 +254,58 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
         builder.create().show();
     }
+
+
+    //date validate
+ /* private static boolean dateValidate(String d){
+        System.out.println("d__"+d);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+
+        try {
+            date = sdf.parse(String.valueOf(date));
+
+            if(!sdf.format(date).equals(d)){
+                return false;
+            }else{
+
+                return true;
+            }
+        }catch (ParseException e){
+            return false;
+        }
+    }*/
+
+     //if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
+
+    public Boolean checkDateFormat1(String date){
+        System.out.println("d__"+date);
+        if (date == null || !date.matches("^([0-9]||1[0-2])/([0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
+            return false;
+
+        SimpleDateFormat format=new SimpleDateFormat("d/M/yyyy");
+        try {
+            format.parse(date);
+            return true;
+        }catch (ParseException e){
+            return false;
+        }
+    }
+
+    public Boolean checkDateFormat2(String date){
+        System.out.println("d__"+date);
+        if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
+            return false;
+
+        SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            format.parse(date);
+            return true;
+        }catch (ParseException e){
+            return false;
+        }
+    }
+
 
 
 
