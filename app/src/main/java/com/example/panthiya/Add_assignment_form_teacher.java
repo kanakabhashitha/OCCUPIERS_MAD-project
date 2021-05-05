@@ -63,6 +63,12 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
     private Uri imageUri;
 
+    //calender variable
+    Calendar calendar = Calendar.getInstance();
+    final  int year = calendar.get(Calendar.YEAR);
+    final  int month = calendar.get(Calendar.MONTH);
+    final  int day = calendar.get(Calendar.DAY_OF_MONTH);
+
 
 
     @Override
@@ -88,10 +94,9 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-        Calendar calendar = Calendar.getInstance();
-        final  int year = calendar.get(Calendar.YEAR);
-        final  int month = calendar.get(Calendar.MONTH);
-        final  int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+
+        //calender dialog view
 
         aDeadLinEd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +148,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
 
 
+
         //initiate database object in main funtion
         dbHelper = new DatabaseHelperMKASG(this);
 
@@ -165,6 +171,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     }
 
 
+    //validate and insert db
     private void getData() {
 
         number = "" + aNumberEt.getText().toString().trim();
@@ -172,19 +179,19 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         deadLine = "" + aDeadLinEd.getText().toString().trim();
         description = "" + aDescriptionEt.getText().toString().trim();
         timeStamp = "" + getDateTime();
-        boolean dateVlid1 = checkDateFormat1(deadLine);
-        boolean dateVlid2 = checkDateFormat2(deadLine);
+        boolean dateVlid = checkDateFormat1(deadLine);
 
 
+        //validate uinput data
         try{
-            System.out.println("date__"+dateVlid2);
+            System.out.println("date__"+dateVlid);
             if(TextUtils.isEmpty(number)){
                 Toast.makeText(getApplicationContext(), "Please enter the assignment Number", Toast.LENGTH_SHORT).show();
             }
             else if(TextUtils.isEmpty(subject)){
                 Toast.makeText(getApplicationContext(), "Please enter the assignment Subject", Toast.LENGTH_SHORT).show();
-            }else if( ( (dateVlid1 != true) || (dateVlid2 != false) ) && ( (dateVlid1 != false) || (dateVlid2 != true) )  ){
-                Toast.makeText(getApplicationContext(), "Please enter the assignment Dead Line", Toast.LENGTH_SHORT).show();
+            }else if( ( (dateVlid != true) ) ){
+                Toast.makeText(getApplicationContext(), "Please enter the valid assignment Dead Line", Toast.LENGTH_SHORT).show();
             }else if(TextUtils.isEmpty(description)){
                 Toast.makeText(getApplicationContext(), "Please enter the assignment Description", Toast.LENGTH_SHORT).show();
             }else if(imageUri == null){
@@ -214,11 +221,31 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     }
 
 
+    //get system date
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
     }
+
+    // full date validate if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
+
+    //date validation
+    public Boolean checkDateFormat1(String date){
+        System.out.println("d__"+date);
+        if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
+            return false;
+
+        SimpleDateFormat format=new SimpleDateFormat("d/M/yyyy");
+        try {
+            format.parse(date);
+            return true;
+        }catch (ParseException e){
+            return false;
+        }
+    }
+
+
 
     private void imagePickDialog() {
 
@@ -254,60 +281,6 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
         builder.create().show();
     }
-
-
-    //date validate
- /* private static boolean dateValidate(String d){
-        System.out.println("d__"+d);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = null;
-
-        try {
-            date = sdf.parse(String.valueOf(date));
-
-            if(!sdf.format(date).equals(d)){
-                return false;
-            }else{
-
-                return true;
-            }
-        }catch (ParseException e){
-            return false;
-        }
-    }*/
-
-     //if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
-
-    public Boolean checkDateFormat1(String date){
-        System.out.println("d__"+date);
-        if (date == null || !date.matches("^([0-9]||1[0-2])/([0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
-            return false;
-
-        SimpleDateFormat format=new SimpleDateFormat("d/M/yyyy");
-        try {
-            format.parse(date);
-            return true;
-        }catch (ParseException e){
-            return false;
-        }
-    }
-
-    public Boolean checkDateFormat2(String date){
-        System.out.println("d__"+date);
-        if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
-            return false;
-
-        SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            format.parse(date);
-            return true;
-        }catch (ParseException e){
-            return false;
-        }
-    }
-
-
-
 
     private void pickFromStorage() {
         //get image from gallary
@@ -434,9 +407,6 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-
-
 
 
 
