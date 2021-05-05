@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -84,6 +85,8 @@ public class add_assingment_student extends AppCompatActivity {
         addTimeStamp = intent.getStringExtra("ADD_TIMESTAMP");
         updateTimeStamp = intent.getStringExtra("UPDATE_TIMESTAMP");
 
+
+
         aNumberEt.setText(number);
         aSubjectEt.setText(subject);
         aDeadLinEd.setText(deadLine);
@@ -123,6 +126,20 @@ public class add_assingment_student extends AppCompatActivity {
 
 
     private void getData() {
+
+       /* if(TextUtils.isEmpty(subject)){
+            Toast.makeText(getApplicationContext(), "Please enter the assignment Subject", Toast.LENGTH_SHORT).show();
+        }else if(TextUtils.isEmpty(number)){
+            Toast.makeText(getApplicationContext(), "Please enter the assignment Number", Toast.LENGTH_SHORT).show();
+        }else if(TextUtils.isEmpty(deadLine)){
+            Toast.makeText(getApplicationContext(), "Please enter the assignment Dead Line", Toast.LENGTH_SHORT).show();
+        }else if(TextUtils.isEmpty(description)){
+            Toast.makeText(getApplicationContext(), "Please enter the assignment Descriptuion", Toast.LENGTH_SHORT).show();
+        }else if(TextUtils.isEmpty((CharSequence) imageUri)){
+            Toast.makeText(getApplicationContext(), "Please enter the assignment Image", Toast.LENGTH_SHORT).show();
+        }else{
+
+        }*/
 
         number = "" + aNumberEt.getText().toString().trim();
         subject = "" + aSubjectEt.getText().toString().trim();
