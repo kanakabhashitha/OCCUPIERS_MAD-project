@@ -20,8 +20,8 @@ public class add_student_form extends AppCompatActivity {
     private DatabaseHelperMKASG dbHelper;
     private static String teacherEmail;
 
-    EditText pSRid, pSRemail, pSRfname, pSRlname, pSRgrade;
-    private static String sid, email, t_email, fname,lname,grade;
+    EditText pSRid, pSRemail;
+    private static String sid, email, t_email, timeStamp;
     Button regBtn;
 
     @SuppressLint("WrongViewCast")
@@ -45,9 +45,6 @@ public class add_student_form extends AppCompatActivity {
 
         pSRemail = findViewById(R.id.sr_email);
         pSRid = findViewById(R.id.sr_id);
-        pSRfname = findViewById(R.id.sr_fName);
-        pSRlname = findViewById(R.id.sr_lName);
-        pSRgrade = findViewById(R.id.sr_grad);
         regBtn = findViewById(R.id.s_regBtn);
 
 
@@ -57,8 +54,6 @@ public class add_student_form extends AppCompatActivity {
 
                 //click the save button insert data to db
                 getData();
-                //dbHelper.getAllDataTable4(t_email);
-
             }
         });
 
@@ -73,12 +68,8 @@ public class add_student_form extends AppCompatActivity {
 
         email = "" + pSRemail.getText().toString().trim();
         sid = "" + pSRid.getText().toString().trim();
-        t_email = teacherEmail;
-        grade = "" + pSRgrade.getText().toString().trim();
-        fname = "" + pSRfname.getText().toString().trim();
-        lname = "" + pSRlname.getText().toString().trim();
-
-        String test = " ";
+        t_email = ""+ teacherEmail;
+        String test = "";
         System.out.println("te__"+teacherEmail);
 
         if (email.isEmpty() || sid.isEmpty()) {
@@ -87,25 +78,20 @@ public class add_student_form extends AppCompatActivity {
         else{
 
             dbHelper.insertInfoTable_4_from_teacher(
-
-                    "" + sid,
+                    "" + email,
+                    "" + test,
+                    "" + test,
+                    "" + test,
+                    ""+ sid,
                     "" + t_email,
-                    "" + test,
-                    "" + fname,
-                    "" + lname,
-                    "" + grade,
-                    "" + test,
-                    "" + test,
-                    "" + test,
-                    "" + email,
-                    "" + email,
                     "" + getDateTime(),
                     "" + getDateTime()
+
 
             );
 
             Intent intent = new Intent(add_student_form.this, studentRegisterPage.class);
-            intent.putExtra("emailT", t_email);
+            intent.putExtra("emailT", email);
             startActivity(intent);
             Toast.makeText(add_student_form.this, "Register Successfull", Toast.LENGTH_SHORT).show();
         }
