@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -13,6 +12,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -30,18 +31,15 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class register extends AppCompatActivity {
-    DrawerLayout drawerLayout;
+public class edit_teacher_pro extends AppCompatActivity {
 
     private ImageView pImageView;
-    private EditText pfName;
-    private EditText pLname;
-    private EditText pEmail;
-    private EditText pPassword;
-    private EditText pRePassword;
-    Button saveInfo;
+    private EditText pfName, pLname, pEmail, pPassword, pRePassword;
+    Button updateInfo;
+    private Uri imageUri;
+    private static String teacherEmail;
 
-    private String id, fName, lName, email, password, rePassword, addTimeStamp, updateTimeStamp, image, timeStamp;
+    private String id, fName, lName, email, password, rePassword;
     private DatabaseHelperMKASG dbHelper;
 
     private static final int CAMERA_REQUEST_CODE = 100;
@@ -53,43 +51,70 @@ public class register extends AppCompatActivity {
     private String[] cameraPermissions;
     private String[] storagePermissions;
 
-    private Uri imageUri;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //remove titel bar
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
-        setContentView(R.layout.activity_register);
-        //assing variable
-        drawerLayout =  findViewById(R.id.drawer_layout);
+        setContentView(R.layout.activity_edit_teacher_pro);
+
+        //initiate database object in main funtion
+        dbHelper = new DatabaseHelperMKASG(this);
 
         pImageView = findViewById(R.id.personImage);
         pfName = findViewById(R.id.fName);
         pLname = findViewById(R.id.lName);
         pEmail = findViewById(R.id.email);
-        pPassword = findViewById(R.id.password);
-        pRePassword = findViewById(R.id.rePassword);
-
-        saveInfo = findViewById(R.id.registerBtn);
+        pPassword = findViewById(R.id.newPassword);
+        pRePassword = findViewById(R.id.renewPassword);
 
 
-        pfName.setText(fName);
-        pLname.setText(lName);
-        pEmail.setText(email);
-        pPassword.setText(password);
+
+        teacherEmail = getIntent().getStringExtra("emailT");
+        String teacherfname = getIntent().getStringExtra("fname");
+        String teacherlname = getIntent().getStringExtra("lname");
+        String teacherpassword = getIntent().getStringExtra("password");
+
+        Cursor cursor = dbHelper.getUserData(teacherEmail);
+
+
+        updateInfo = findViewById(R.id.updateBTN);
+
+        pfName.setText(teacherfname);
+        pLname.setText(teacherlname);
+        pEmail.setText(teacherEmail);
+        pPassword.setText(teacherpassword);
+
+
+        if (cursor.moveToFirst()) {
+            do {
+                Model_TR model = new Model_TR(
+
+                        "" + cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.T_ID)),
+                        "" + cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_IMAGE)),
+                        "" + cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_F_NAME)),
+                        "" + cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_L_NAME)),
+                        "" + cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_EMAIL)),
+                        "" + cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_PASSWORD)),
+                        "" + cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_ADD_TIMESTAMP)),
+                        "" + cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_UPDATE_TIMESTAMP))
+
+                );
+                //Adding user record to list
+                pImageView.setImageURI(Uri.parse(model.t_image));
+
+            } while (cursor.moveToNext());
+        }
+
+
 
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-
-        //initiate database object in main funtion
-        dbHelper = new DatabaseHelperMKASG(this);
 
         pImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,22 +124,19 @@ public class register extends AppCompatActivity {
             }
         });
 
-        saveInfo.setOnClickListener(new View.OnClickListener() {
+        updateInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 //click the save button insert data to db
-                getData();
+                editDialog();
             }
         });
 
     }
 
 
-
     private void getData() {
-
-
 
         fName = "" + pfName.getText().toString().trim();
         lName = "" + pLname.getText().toString().trim();
@@ -126,14 +148,11 @@ public class register extends AppCompatActivity {
 
         if (email.isEmpty() || fName.isEmpty() || lName.isEmpty() || password.isEmpty() || rePassword.isEmpty()) {
             Toast.makeText(this, "Please fill all the information", Toast.LENGTH_SHORT).show();
-        }else if (!password.equals(rePassword)){
+        } else if (!password.equals(rePassword)) {
             Toast.makeText(this, "password mismatch", Toast.LENGTH_SHORT).show();
-        }else if(dbHelper.checkUserName(email) == true){
-                Toast.makeText(this, "Email alrady excest", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        } else {
 
-            dbHelper.insertInfoTable_3(
+            dbHelper.updateInfoTable_3(
                     "" + fName,
                     "" + lName,
                     "" + email,
@@ -143,13 +162,42 @@ public class register extends AppCompatActivity {
                     "" + getDateTime()
             );
 
-            Intent intent = new Intent(register.this, main_activity.class);
+            Intent intent = new Intent(edit_teacher_pro.this, profile.class);
             intent.putExtra("emailT", email);
             startActivity(intent);
-            Toast.makeText(register.this, "Register Successfull", Toast.LENGTH_SHORT).show();
+            Toast.makeText(edit_teacher_pro.this, "Update Successfull", Toast.LENGTH_SHORT).show();
         }
 
+    }
 
+
+
+    private void editDialog() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Edit");
+        builder.setMessage("Are you want to edit ?");
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.editicon);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                getData();
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.cancel();
+
+            }
+        });
+
+        builder.create().show();
     }
 
 
@@ -161,7 +209,6 @@ public class register extends AppCompatActivity {
         Date date = new Date();
         return dateFormat.format(date);
     }
-
 
 
     private void imagePickDialog() {
@@ -198,7 +245,6 @@ public class register extends AppCompatActivity {
 
         builder.create().show();
     }
-
 
 
     private void pickFromStorage() {
@@ -328,53 +374,9 @@ public class register extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
-//navigation work area
-    public void clickMenu(View view){
-        //open drawer
-        main_activity.openDrawer(drawerLayout);
-    }
-
-    public void clickLogo(View view){
-        //close drawer
-        main_activity.closeDrawer(drawerLayout);
-    }
-
-    public void clickLogin(View view){
-        //redirect activity to home
-        main_activity.redirectActivity(this, login_page.class);
-    }
-
-
-
-    public void clickAboutus(View view){
-        //redirect activity to about us
-        main_activity.redirectActivity(this,aboutus.class);
-    }
-
-
-    public void clickRegister(View view){
-
-        //recreate activity
-        recreate();
-    }
-
-    public void clickLogout(View view){
-        //close app
-        main_activity.logout(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //close drawer
-        main_activity.closeDrawer(drawerLayout);
+    public void clickBack(View view) {
+        Intent intentback = new Intent(this, profile.class);
+        intentback.putExtra("emailT",teacherEmail);
+        startActivity(intentback);
     }
 }
