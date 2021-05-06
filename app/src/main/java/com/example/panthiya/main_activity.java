@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -25,6 +26,9 @@ public class main_activity extends AppCompatActivity {
     //initialize variables
     DrawerLayout drawerLayout;
     TextView MKassing;
+    private static String teacherEmail;
+    TextView proBtn;
+    private DatabaseHelperMKASG dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,7 @@ public class main_activity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
+        //proBtn = findViewById(R.id.probtn);
 
         //assing variable
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -52,6 +56,11 @@ public class main_activity extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.welcomesix, "Check You Score"));
 
         imageSlider.setImageList(slideModels, true);
+
+        teacherEmail = getIntent().getStringExtra("emailT");
+
+        dbHelper = new DatabaseHelperMKASG(this);
+
 
 
     }
@@ -89,17 +98,28 @@ public class main_activity extends AppCompatActivity {
     public void clickProfile(View view){
         //rederect to activity to profile
         redirectActivity(this, profile.class);
+        Intent intent = new Intent(main_activity.this,profile.class);
+        intent.putExtra("emailT", teacherEmail);
+        startActivity(intent);
     }
+
+
 
     public void clickRegister(View view){
         //rederect to activity to dashboard
         redirectActivity(this, register.class);
+        Intent intent = new Intent(main_activity.this,register.class);
+        intent.putExtra("emailT", teacherEmail);
+        startActivity(intent);
     }
 
 
     public void clickAboutus(View view){
         //redirect actiity to about us
         redirectActivity(this, aboutus.class);
+        Intent intent = new Intent(main_activity.this,profile.class);
+        intent.putExtra("emailT", teacherEmail);
+        startActivity(intent);
     }
 
     public void clickLogout(View view){
@@ -144,8 +164,12 @@ public class main_activity extends AppCompatActivity {
     public static void redirectActivity(Activity activity, Class aClass) {
         //initilize intent
         Intent intent =  new Intent(activity,aClass);
+        intent.putExtra("emailT", teacherEmail);
         //setfalg
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+
+
         //satart activity
         activity.startActivity(intent);
     }
@@ -160,30 +184,35 @@ public class main_activity extends AppCompatActivity {
     //student register activity
     public void clickStudentRegister(View view) {
         Intent intentstudentReg = new Intent(this,studentRegisterPage.class);
+        intentstudentReg.putExtra("emailT", teacherEmail);
         startActivity(intentstudentReg);
 
     }
     //make assingment
     public void clickMakeAssignment(View view) {
         Intent intentMakeAssingment = new Intent(this,makeAssingment.class);
+        intentMakeAssingment.putExtra("emailT", teacherEmail);
         startActivity(intentMakeAssingment);
     }
 
     //check assingment
     public void clickCheckAssignment(View view) {
         Intent intentCheckAssingment = new Intent(this,check_assignment.class);
+        intentCheckAssingment.putExtra("emailT", teacherEmail);
         startActivity(intentCheckAssingment);
     }
 
     //add marks
     public void clickAddMarks(View view) {
         Intent intentAddMark = new Intent(this,addMark.class);
+        intentAddMark.putExtra("emailT", teacherEmail);
         startActivity(intentAddMark);
     }
 
     //techers recorde book
     public void clickCheckTeacherRecordBook(View view) {
         Intent intentTeacherRecordBook = new Intent(this,TeacherRecordBook.class);
+        intentTeacherRecordBook.putExtra("emailT", teacherEmail);
         startActivity(intentTeacherRecordBook);
     }
 
