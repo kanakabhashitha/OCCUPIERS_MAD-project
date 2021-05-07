@@ -518,8 +518,32 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
     }
 
+    //delete informatin  table4
 
+    public void deleteInfo_table_4_teacher(String sid){
 
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(ConstantsMKASG.TABLE_NAME_4, ConstantsMKASG.SR_ID + " = ? ", new String[]{sid});
+        db.close();
+
+    }
+
+    //student side table4
+
+    //get emailpassword
+    public boolean checkSudentemailpassword(String email, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME_4 + " WHERE EMAIL= ? AND PASSWORD= ?",
+                new String[]{email,password});
+
+        /*  Cursor cursor = db.rawQuery("select * from TABLE_NAME_3 where EMAIL= ? and PASSWORD= ?",new String[]{email,password});*/
+
+        if (cursor.getCount()> 0){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
 
 }

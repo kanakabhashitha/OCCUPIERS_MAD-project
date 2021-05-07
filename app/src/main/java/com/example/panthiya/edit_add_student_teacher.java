@@ -129,7 +129,7 @@ public class edit_add_student_teacher extends AppCompatActivity {
                         "" + test,
                         "" + test,
                         "" + email,
-                        "" + email,
+                        "" + sid,
                         "" + getDateTime(),
                         "" + getDateTime()
 
@@ -161,7 +161,7 @@ public class edit_add_student_teacher extends AppCompatActivity {
                         "" + test,
                         "" + test,
                         "" + email,
-                        "" + email,
+                        "" + sid,
                         "" + addTimeStamp,
                         "" + updateTimeStamp
 
