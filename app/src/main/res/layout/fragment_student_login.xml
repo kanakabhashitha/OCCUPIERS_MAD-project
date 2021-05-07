@@ -11,7 +11,72 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            tools:context=".AddRecordActivity">
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dispalay_text"
+                android:text="Student Login"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"/>
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:id="@+id/personImage"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/dispalay_text"
+                android:padding="2dp"
+                android:src="@drawable/logo"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email_login"
+                android:layout_below="@id/personImage"
+                android:hint="Enter Email"
+                android:inputType="textPersonName|textCapWords"
+                android:padding="10dp"
+
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/password_login"
+                android:layout_below="@id/email_login"
+                android:hint="Enter Password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+
+                android:layout_marginTop="16dp"/>
+
+
+
+
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/login_btn"
+                android:layout_below="@+id/password_login"
+                android:layout_centerHorizontal="true"
+                android:text="Login..!"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                />
+
+        </RelativeLayout>
 
 
     </LinearLayout>
