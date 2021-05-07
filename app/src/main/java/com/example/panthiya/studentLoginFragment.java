@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class studentLoginFragment extends Fragment {
 
-    private EditText emailEt, passwordET;
+    private EditText userIdEt, passwordET;
     Button logBtn;
     private DatabaseHelperMKASG dbHelper;
 
@@ -34,7 +34,7 @@ public class studentLoginFragment extends Fragment {
 
         dbHelper = new DatabaseHelperMKASG(getActivity());
 
-        emailEt = (EditText) rootView.findViewById(R.id.email_login);
+        userIdEt = (EditText) rootView.findViewById(R.id.email_login);
         passwordET = (EditText)rootView.findViewById(R.id.password_login);
 
 
@@ -46,23 +46,24 @@ public class studentLoginFragment extends Fragment {
             public void onClick(View v) {
 
 
-                String email = emailEt.getText().toString();
+                String uid = userIdEt.getText().toString();
                 String password = passwordET.getText().toString();
 
-                Boolean checkStudentUserName = dbHelper.checkSudentemailpassword(email,password);
+                Boolean checkStudentUserName = dbHelper.checkSudentemailpassword(uid,password);
                 System.out.println("pw__"+checkStudentUserName);
 
                 if (checkStudentUserName == true){
 
                     Intent intent = new Intent(getActivity(),student_home.class);
-                    intent.putExtra("emailT", email);
+                    System.out.println("sE___"+password);
+                    intent.putExtra("studentSid", uid);
                     startActivity(intent);
 
                 } else {
 
                     Toast.makeText(getContext(), "Wrong Email Password", Toast.LENGTH_SHORT).show();
 
-                    emailEt.setText("");
+                    userIdEt.setText("");
                     passwordET.setText("");
                 }
 

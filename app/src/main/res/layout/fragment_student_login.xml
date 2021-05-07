@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/email_login"
                 android:layout_below="@id/personImage"
-                android:hint="Enter Email"
+                android:hint="Enter Student ID"
                 android:inputType="textPersonName|textCapWords"
                 android:padding="10dp"
 
