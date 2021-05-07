@@ -15,23 +15,38 @@
    <include
        layout="@layout/backwerdmanu"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="sR"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+        <RelativeLayout
 
-        <TextView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="activity_student_register_page.xml"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/back_cover_01"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="studentRegisterPage java"/>
+
+             <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recylceView_teachr"
+                tools:listitem="@layout/row_teacher"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addFabButton"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="16dp"
+                android:elevation="6dp"
+                android:backgroundTint="#C860DA"
+                android:src="@drawable/add_button"/>
+
+        </RelativeLayout>
 
 
     </LinearLayout>

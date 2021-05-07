@@ -24,11 +24,15 @@ public class student_home extends AppCompatActivity {
     //initialize variables
     private DrawerLayout drawerLayout;
     TextView studentReg;
-
+    private DatabaseHelperMKASG dbHelper;
+    private static String studentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //initiate database object in main funtion
+        dbHelper = new DatabaseHelperMKASG(this);
 
         //remove titel bar
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
@@ -51,6 +55,9 @@ public class student_home extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.welcomesix, "Check You Score"));
 
         imageSlider.setImageList(slideModels, true);
+
+        studentID = getIntent().getStringExtra("studentSid");
+
 
     }
 
@@ -164,9 +171,9 @@ public class student_home extends AppCompatActivity {
         startActivity(intentview_assignment_student_view);
     }
 
-    public void clickStudentAddAssignment(View view) {
-        Intent intentadd_assingment_student = new Intent(this,add_assingment_student.class);
-        startActivity(intentadd_assingment_student);
+    public void clickMyAssignmentLog(View view) {
+        Intent intentadd_my_assignment_log = new Intent(this,my_assignment_log.class);
+        startActivity(intentadd_my_assignment_log);
     }
 
     public void clickViewMarkAssignment(View view) {
@@ -181,6 +188,7 @@ public class student_home extends AppCompatActivity {
 
     public void clickMyprofile(View view) {
         Intent intentStudent_profile = new Intent(this,student_profile.class);
+        intentStudent_profile.putExtra("studentSid", studentID);
         startActivity(intentStudent_profile);
     }
 

@@ -18,6 +18,7 @@ public class login_page extends AppCompatActivity {
     private ViewPager viewPager;
     private TabItem tab1,tab2;
     public PageAdapter3 pagerAdapter;
+    private DatabaseHelperMKASG dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,10 @@ public class login_page extends AppCompatActivity {
         requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
+        //initiate database object in main funtion
+        dbHelper = new DatabaseHelperMKASG(this);
+
 
         setContentView(R.layout.activity_login_page);
         //assing variable

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edit_add_student_teacher">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/backwerdmanu"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            tools:context=".AddRecordActivity">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/dispalay_text"
+                android:text="Add Student To Class"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"/>
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:id="@+id/personImage"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/dispalay_text"
+                android:padding="2dp"
+                android:src="@drawable/stbtn_1"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sr_id"
+                android:layout_below="@id/personImage"
+                android:hint="Student ID (use as username)"
+                android:inputType="number"
+                android:padding="10dp"
+
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sr_email"
+                android:layout_below="@id/sr_id"
+                android:hint="Student Email (use as paasword)"
+                android:inputType="textPersonName|textCapWords"
+                android:padding="10dp"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sr_fName"
+                android:layout_below="@id/sr_email"
+                android:hint="First Name"
+                android:inputType="textPersonName|textCapWords"
+                android:padding="10dp"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sr_lName"
+                android:layout_below="@id/sr_fName"
+                android:hint="Last Name"
+                android:inputType="textPersonName|textCapWords"
+                android:padding="10dp"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sr_grad"
+                android:layout_below="@id/sr_lName"
+                android:hint="Grade"
+                android:inputType="textPersonName|textCapWords"
+                android:padding="10dp"
+                android:layout_marginTop="16dp"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/s_updateBtn"
+                android:layout_below="@+id/sr_grad"
+                android:layout_centerHorizontal="true"
+                android:text="Update"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

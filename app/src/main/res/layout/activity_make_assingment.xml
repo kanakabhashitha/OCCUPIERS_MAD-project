@@ -16,56 +16,40 @@
         <include
             layout="@layout/backwerdmanu"/>
 
-        <LinearLayout
+
+
+
+
+        <RelativeLayout
+
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical">
+            android:background="@drawable/back_cover_01"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#27CAEF"
-                app:tabIndicatorColor="#0408F6"
-                app:tabSelectedTextColor="#0408F6"
-                app:tabTextAppearance="@style/TextAppearance.AppCompat.Title"
-                app:tabTextColor="@color/white">
-
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Make Assignment" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View Assignment" />
-
-
-            </com.google.android.material.tabs.TabLayout>
-
-
-            <androidx.viewpager.widget.ViewPager
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/viewpager"/>
+                android:id="@+id/recylceView"
+                tools:listitem="@layout/row_mkasg"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/addFabButton"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="16dp"
+                android:elevation="6dp"
+                android:backgroundTint="#C860DA"
+                android:src="@drawable/add_button"/>
 
-
-
-
-
-
-
-        </LinearLayout>
-
-
-
-
+        </RelativeLayout>
 
 
 
