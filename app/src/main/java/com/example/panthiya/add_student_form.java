@@ -98,7 +98,7 @@ public class add_student_form extends AppCompatActivity {
                     "" + test,
                     "" + test,
                     "" + email,
-                    "" + sid,
+                    "" + email,
                     "" + getDateTime(),
                     "" + getDateTime()
 
