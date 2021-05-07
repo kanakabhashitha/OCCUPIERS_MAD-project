@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_btn_ori">Add</string>
+    <string name="add_photo">photo</string>
+    <string name="add_namee">Name</string>
+    <string name="add_studentid">Student ID</string>
+    <string name="add_grade">Grade</string>
+    <string name="add_more">More</string>
+</resources>
