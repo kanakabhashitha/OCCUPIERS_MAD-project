@@ -14,6 +14,15 @@
         <include
             layout="@layout/backwerdmanu"/>
 
+        <Button
+            android:id="@+id/tr_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="290dp"
+            android:text="@string/addbutton"
+            android:textSize="20dp" />
+
         <RelativeLayout
 
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,14 +32,7 @@
             android:background="@drawable/back_cover_01"
             xmlns:app="http://schemas.android.com/apk/res-auto">
 
-            <Button
-                android:id="@+id/tr_add_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:text="@string/addbutton"
-                android:textSize="20dp" />
+
 
                 <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
