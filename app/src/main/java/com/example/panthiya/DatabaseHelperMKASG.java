@@ -531,10 +531,10 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
     //student side table4
 
     //get emailpassword
-    public boolean checkSudentemailpassword(String email, String password){
+    public boolean checkSudentemailpassword(String ui, String password){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME_4 + " WHERE EMAIL= ? AND PASSWORD= ?",
-                new String[]{email,password});
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME_4 + " WHERE ID= ? AND PASSWORD= ?",
+                new String[]{ui,password});
 
         /*  Cursor cursor = db.rawQuery("select * from TABLE_NAME_3 where EMAIL= ? and PASSWORD= ?",new String[]{email,password});*/
 
@@ -543,6 +543,51 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         }else {
             return false;
         }
+    }
+
+    //student data
+    public Cursor getStudentData(String sid){
+        System.out.println("sE__"+sid);
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME_4 + " WHERE ID = ?",
+                new String[]{sid});
+
+    }
+
+
+    //update information TABLE4 student
+
+    public void updateInfoTable_4_student(String sid, String fkid, String image, String fname, String lname, String grade, String age, String gender, String phone, String email, String password, String addTimeStamp, String updateTimeStamp) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ConstantsMKASG.SR_ID, sid);
+        //values.put(ConstantsMKASG.TFK_ID, fkid);
+        values.put(ConstantsMKASG.SR_IMAGE, image);
+        values.put(ConstantsMKASG.SR_F_NAME, fname);
+        values.put(ConstantsMKASG.SR_L_NAME, lname);
+        values.put(ConstantsMKASG.SR_GRADE, grade);
+        values.put(ConstantsMKASG.SR_AGE, age);
+        values.put(ConstantsMKASG.SR_GENDER, gender);
+        values.put(ConstantsMKASG.SR_PONE, phone);
+        values.put(ConstantsMKASG.SR_EMAIL, email);
+        values.put(ConstantsMKASG.SR_PASSWORD, password);
+        values.put(ConstantsMKASG.SR_ADD_TIMESTAMP, addTimeStamp);
+        values.put(ConstantsMKASG.SR_UPDATE_TIMESTAMP, updateTimeStamp);
+
+        db.update(ConstantsMKASG.TABLE_NAME_4, values, ConstantsMKASG.SR_ID + " = ?", new String[]{sid});
+        db.close();
+
+    }
+
+
+    public void deleteInfo_table_4(String sid){
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(ConstantsMKASG.TABLE_NAME_4, ConstantsMKASG.SR_ID + " = ? ", new String[]{sid});
+        db.close();
+
     }
 
 
