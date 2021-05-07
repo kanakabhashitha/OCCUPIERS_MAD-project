@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -95,21 +94,6 @@ public class Adapter_teacher extends RecyclerView.Adapter<Adapter_teacher.Holder
             }
         });
 
-
-
-        //when long press on item, show and alert dialog for delete
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-
-                deleteDialog(
-                        ""+sid
-                );
-
-                return false;
-            }
-        });
-
     }
 
 
@@ -151,38 +135,6 @@ public class Adapter_teacher extends RecyclerView.Adapter<Adapter_teacher.Holder
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
-            }
-        });
-
-        builder.create().show();
-    }
-
-
-    private void deleteDialog(final String id) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Delete");
-        builder.setMessage("Are you want to delete ?");
-        builder.setCancelable(false);
-        builder.setIcon(R.drawable.delete_icon);
-
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                databaseHelper.deleteInfo_table_4_teacher(id);
-                ((studentRegisterPage)context).onResume();
-                Toast.makeText(context, "Delete Successful", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                dialog.cancel();
-
             }
         });
 
