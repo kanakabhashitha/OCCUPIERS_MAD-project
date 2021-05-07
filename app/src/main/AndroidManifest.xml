@@ -14,7 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".add_student_foam"></activity>
+        <activity android:name=".edit_add_student_teacher"></activity>
+        <activity android:name=".add_student_form" />
+        <activity android:name=".edit_teacher_pro" />
+        <activity android:name=".Pri_image" />
+        <activity android:name=".check_student_answer_view" />
+        <activity android:name=".anstudent_answer_view" />
+        <activity android:name=".edit_student_assingment" />
+        <activity android:name=".my_assignment_log" />
+        <activity android:name=".Preview_assingnmnet_student" />
+        <activity android:name=".preview_assingment" />
+        <activity android:name=".Add_assignment_form_teacher" />
         <activity android:name=".my_note_student" />
         <activity android:name=".view_marks_student" />
         <activity android:name=".add_assingment_student" />
@@ -60,14 +70,13 @@
         <activity android:name=".main_activity">
 
             <!--
-                           <intent-filter>
-                           <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                           <category android:name="android.intent.category.LAUNCHER" />
-                       </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             -->
-        </activity>
-
+        </activity> <!-- crop image working -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
