@@ -420,17 +420,22 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
     //insert information table4
 
-    public long insertInfoTable_4_from_teacher(String email, String image, String fname, String lname, String sid, String fkID, String addTimeStamp, String updateTimeStamp) {
+    public long insertInfoTable_4_from_teacher(String sid, String fkid, String image, String fname, String lname, String grade, String age, String gender, String phone, String email, String password, String addTimeStamp, String updateTimeStamp) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(ConstantsMKASG.SR_EMAIL, email);
-        values.put(ConstantsMKASG.TFK_ID, fkID);
+        values.put(ConstantsMKASG.SR_ID, sid);
+        values.put(ConstantsMKASG.TFK_ID, fkid);
         values.put(ConstantsMKASG.SR_IMAGE, image);
         values.put(ConstantsMKASG.SR_F_NAME, fname);
         values.put(ConstantsMKASG.SR_L_NAME, lname);
-        values.put(ConstantsMKASG.SR_PASSWORD, sid);
+        values.put(ConstantsMKASG.SR_GRADE, grade);
+        values.put(ConstantsMKASG.SR_AGE, age);
+        values.put(ConstantsMKASG.SR_GENDER, gender);
+        values.put(ConstantsMKASG.SR_PONE, phone);
+        values.put(ConstantsMKASG.SR_EMAIL, email);
+        values.put(ConstantsMKASG.SR_PASSWORD, password);
         values.put(ConstantsMKASG.SR_ADD_TIMESTAMP, addTimeStamp);
         values.put(ConstantsMKASG.SR_UPDATE_TIMESTAMP, updateTimeStamp);
 
@@ -440,6 +445,78 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
     }
 
+
+    //table4 arryList
+
+    public ArrayList<Model_SR> getAllDataTable4(String fkid){
+
+        System.out.println("fk__"+fkid);
+        ArrayList<Model_SR> arrayList = new ArrayList<>();
+
+        //query for select all info in databse
+       // String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_2 + " WHERE TFK_ID = ?",new String[] {fkid};
+
+        SQLiteDatabase db = this.getReadableDatabase();
+       // Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME_4 + " WHERE TFK_ID = ? ",
+                new String[]{fkid});
+
+        //select all info from databes new gte the data from column
+        if(cursor.moveToNext()){
+
+            do{
+
+                Model_SR model = new Model_SR(
+
+                        ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.SR_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.TFK_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_IMAGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_F_NAME)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_L_NAME)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_GRADE)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_AGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_GENDER)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_PONE)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_EMAIL)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_PASSWORD)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_ADD_TIMESTAMP)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SR_UPDATE_TIMESTAMP))
+                );
+
+                arrayList.add(model);
+            } while(cursor.moveToNext());
+        }
+
+        db.close();
+        return arrayList;
+    }
+
+
+    //update information TABLE4
+
+    public void updateInfoTable_4_techer(String sid, String fkid, String image, String fname, String lname, String grade, String age, String gender, String phone, String email, String password, String addTimeStamp, String updateTimeStamp) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ConstantsMKASG.SR_ID, sid);
+        values.put(ConstantsMKASG.TFK_ID, fkid);
+        values.put(ConstantsMKASG.SR_IMAGE, image);
+        values.put(ConstantsMKASG.SR_F_NAME, fname);
+        values.put(ConstantsMKASG.SR_L_NAME, lname);
+        values.put(ConstantsMKASG.SR_GRADE, grade);
+        values.put(ConstantsMKASG.SR_AGE, age);
+        values.put(ConstantsMKASG.SR_GENDER, gender);
+        values.put(ConstantsMKASG.SR_PONE, phone);
+        values.put(ConstantsMKASG.SR_EMAIL, email);
+        values.put(ConstantsMKASG.SR_PASSWORD, password);
+        values.put(ConstantsMKASG.SR_ADD_TIMESTAMP, addTimeStamp);
+        values.put(ConstantsMKASG.SR_UPDATE_TIMESTAMP, updateTimeStamp);
+
+        db.update(ConstantsMKASG.TABLE_NAME_4, values, ConstantsMKASG.SR_ID + " = ?", new String[]{sid});
+        db.close();
+
+    }
 
 
 

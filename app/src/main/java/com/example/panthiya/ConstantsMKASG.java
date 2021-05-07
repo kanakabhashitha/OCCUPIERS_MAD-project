@@ -47,6 +47,10 @@ public class ConstantsMKASG {
     public static final String SR_IMAGE = "IMAGE";
     public static final String SR_F_NAME = "FIRST_NAME";
     public static final String SR_L_NAME = "LAST_NAME";
+    public static final String SR_GRADE = "GRADE";
+    public static final String SR_AGE = "AGE";
+    public static final String SR_GENDER = "GENDER";
+    public static final String SR_PONE = "PHONE";
     public static final String SR_EMAIL = "EMAIL";
     public static final String SR_PASSWORD = "PASSWORD";
     public static final String SR_ADD_TIMESTAMP = "ADD_TIMESTAPM";
@@ -89,13 +93,17 @@ public class ConstantsMKASG {
             + T_UPDATE_TIMESTAMP + " TEXT"
             + ");";
 
-    //CREATE QUERY for table3
+    //CREATE QUERY for table 4
     public static final String CREATE_TABLE_4 = "CREATE TABLE " + TABLE_NAME_4 + " ("
-            + SR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + TFK_ID + " INTEGER REFERENCES,"
+            + SR_ID + " STRING PRIMARY KEY,"
+            + TFK_ID + " STRING REFERENCES " + T_ID + ","
             + SR_IMAGE + " TEXT,"
             + SR_F_NAME + " TEXT,"
             + SR_L_NAME + " TEXT,"
+            + SR_GRADE + " TEXT,"
+            + SR_AGE + " TEXT,"
+            + SR_GENDER + " TEXT,"
+            + SR_PONE + " TEXT,"
             + SR_EMAIL + " TEXT,"
             + SR_PASSWORD + " TEXT,"
             + SR_ADD_TIMESTAMP + " TEXT,"
