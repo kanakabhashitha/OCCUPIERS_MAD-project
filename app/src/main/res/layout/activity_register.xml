@@ -17,27 +17,7 @@
         <include
             layout="@layout/main_toolbar"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Teacher's Register"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="activity_register.xml"
-            android:textStyle="bold"
-            android:gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="register java file eka"
-            android:textStyle="bold"
-            android:gravity="center"/>
 
 
 

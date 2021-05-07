@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".my_note_student"></activity>
+        <activity android:name=".add_student_foam"></activity>
+        <activity android:name=".my_note_student" />
         <activity android:name=".view_marks_student" />
         <activity android:name=".add_assingment_student" />
         <activity android:name=".student_aboutUs" />
@@ -20,27 +21,23 @@
         <activity android:name=".edit_assingment" />
         <activity android:name=".view_assignment_student_view" />
         <activity android:name=".student_home">
-         <!--
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-         -->
+            -->
         </activity>
         <activity android:name=".check_assignment" />
         <activity android:name=".view_upload_assignment" />
         <activity android:name=".login_page">
-
-        <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        -->
-
         </activity>
         <activity android:name=".makeAssingment">
 
@@ -60,13 +57,13 @@
         <activity android:name=".profile" />
         <activity android:name=".main_activity">
 
+            <!--
+                           <intent-filter>
+                           <action android:name="android.intent.action.MAIN" />
 
-                <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+                           <category android:name="android.intent.category.LAUNCHER" />
+                       </intent-filter>
+            -->
         </activity>
 
         <meta-data
