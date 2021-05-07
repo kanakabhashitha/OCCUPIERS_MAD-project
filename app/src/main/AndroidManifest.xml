@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".add_student_form"></activity>
+        <activity android:name=".edit_add_student_teacher"></activity>
+        <activity android:name=".add_student_form" />
         <activity android:name=".edit_teacher_pro" />
         <activity android:name=".Pri_image" />
         <activity android:name=".check_student_answer_view" />

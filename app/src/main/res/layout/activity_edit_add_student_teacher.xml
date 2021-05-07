@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_cover_02"
-    tools:context=".add_student_form">
+    tools:context=".edit_add_student_teacher">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -85,7 +84,7 @@
                 android:padding="10dp"
                 android:layout_marginTop="16dp"/>
 
-      <EditText
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/sr_grad"
@@ -99,10 +98,10 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/s_regBtn"
+                android:id="@+id/s_updateBtn"
                 android:layout_below="@+id/sr_grad"
                 android:layout_centerHorizontal="true"
-                android:text="Rgister"
+                android:text="Update"
                 android:textStyle="bold"
                 android:layout_marginTop="16dp"
                 />
@@ -112,5 +111,6 @@
 
 
     </LinearLayout>
+
 
 </LinearLayout>

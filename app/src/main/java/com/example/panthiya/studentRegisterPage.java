@@ -1,6 +1,7 @@
 package com.example.panthiya;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ public class studentRegisterPage extends AppCompatActivity {
     private DatabaseHelperMKASG dbHelper;
     private static String teacherEmail;
     FloatingActionButton fabBtn;
+    RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +35,33 @@ public class studentRegisterPage extends AppCompatActivity {
 
         fabBtn = findViewById(R.id.addFabButton);
 
+        mRecyclerView = findViewById(R.id.recylceView_teachr);
+        showRercord();
+
         fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(studentRegisterPage.this, add_student_form.class);
                 intent.putExtra("emailT", teacherEmail);
+                intent.putExtra("EditMode", false);
                 startActivity(intent);
             }
         });
 
+    }
+
+
+    public void showRercord() {
+
+        Adapter_teacher adapter = new Adapter_teacher(studentRegisterPage.this, dbHelper.getAllDataTable4(teacherEmail));
+        //because last add record is show on top
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showRercord();
     }
 
     public void clickBack(View view) {
