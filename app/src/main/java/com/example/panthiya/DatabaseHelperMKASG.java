@@ -256,7 +256,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
     //table3 arryList
 
-   //insert information table 3
+    //insert information table 3
 
     public long insertInfoTable_3(String fName, String lName, String email, String password, String image, String addTimeStamp, String updateTimeStamp) {
 
@@ -312,7 +312,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         // Traversing through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-               Model_TR model = new Model_TR(
+                Model_TR model = new Model_TR(
 
                         ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.T_ID)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_IMAGE)),
@@ -322,7 +322,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_PASSWORD)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_ADD_TIMESTAMP)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.T_UPDATE_TIMESTAMP))
-               );
+                );
                 // Adding user record to list
                 userList.add(model);
             } while (cursor.moveToNext());
@@ -351,10 +351,10 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
     //get emailpassword
     public boolean checkemailpassword(String email, String password){
         SQLiteDatabase db = this.getReadableDatabase();
-       Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME_3 + " WHERE EMAIL= ? AND PASSWORD= ?",
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME_3 + " WHERE EMAIL= ? AND PASSWORD= ?",
                 new String[]{email,password});
 
-      /*  Cursor cursor = db.rawQuery("select * from TABLE_NAME_3 where EMAIL= ? and PASSWORD= ?",new String[]{email,password});*/
+        /*  Cursor cursor = db.rawQuery("select * from TABLE_NAME_3 where EMAIL= ? and PASSWORD= ?",new String[]{email,password});*/
 
         if (cursor.getCount()> 0){
             return true;
@@ -456,10 +456,10 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         ArrayList<Model_SR> arrayList = new ArrayList<>();
 
         //query for select all info in databse
-       // String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_2 + " WHERE TFK_ID = ?",new String[] {fkid};
+        // String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_2 + " WHERE TFK_ID = ?",new String[] {fkid};
 
         SQLiteDatabase db = this.getReadableDatabase();
-       // Cursor cursor = db.rawQuery(selectQuery, null);
+        // Cursor cursor = db.rawQuery(selectQuery, null);
         Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME_4 + " WHERE TFK_ID = ? ",
                 new String[]{fkid});
 
