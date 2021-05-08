@@ -56,13 +56,6 @@ public class main_activity extends AppCompatActivity {
         slideModels.add(new SlideModel(R.drawable.welcomesix, "Check You Score"));
 
         imageSlider.setImageList(slideModels, true);
-
-        teacherEmail = getIntent().getStringExtra("emailT");
-
-        dbHelper = new DatabaseHelperMKASG(this);
-
-
-
     }
 
     public void clickMenu(View view){
@@ -198,7 +191,7 @@ public class main_activity extends AppCompatActivity {
     //check assingment
     public void clickCheckAssignment(View view) {
         Intent intentCheckAssingment = new Intent(this,check_assignment.class);
-        intentCheckAssingment.putExtra("emailT", teacherEmail);
+        //intentCheckAssingment.putExtra("emailT", teacherEmail);
         startActivity(intentCheckAssingment);
     }
 

@@ -26,6 +26,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         db.execSQL(ConstantsMKASG.CREATE_TABLE_4);
         db.execSQL(ConstantsMKASG.CREATE_TABLE);
         db.execSQL(ConstantsMKASG.CREATE_TABLE_2);
+        db.execSQL(ConstantsMKASG.CREATE_TABLE_5);
     }
 
     @Override
@@ -34,6 +35,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ConstantsMKASG.TABLE_NAME_4);
         db.execSQL("DROP TABLE IF EXISTS "+ConstantsMKASG.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+ConstantsMKASG.TABLE_NAME_2);
+        db.execSQL("DROP TABLE IF EXISTS "+ConstantsMKASG.TABLE_NAME_5);
 
         onCreate(db);
     }
@@ -589,6 +591,124 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         db.close();
 
     }
+
+
+    //maduka workspace
+    //table name5
+
+    //insert infomation table 5
+
+    public long insertInfo_tabel_5(String assignment, String studentid, String name, String subject, String marks, String comment) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ConstantsMKASG.ASSIGNMENT, assignment);
+        values.put(ConstantsMKASG.STUDENTID, studentid);
+        values.put(ConstantsMKASG.NAME, name);
+        values.put(ConstantsMKASG.SUBJECT, subject);
+        values.put(ConstantsMKASG.MARKS, marks);
+        values.put(ConstantsMKASG.COMMENT, comment);
+
+        long id =  db.insert(ConstantsMKASG.TABLE_NAME_5, null, values);
+        db.close();
+        return id;
+
+    }
+
+
+    //get all data table 5
+
+    public ArrayList<Model_TM> getAllData_table_5(String orderBy){
+
+        ArrayList<Model_TM> arrayList = new ArrayList<>();
+
+        //query for select all info in databse
+        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " ORDER BY " + orderBy;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //select all info from databes new gte the data from column
+        if(cursor.moveToNext()){
+
+            do{
+
+                Model_TM model = new Model_TM(
+
+                        ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.ASSIGNMENT)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.STUDENTID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.NAME)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SUBJECT)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.MARKS)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.COMMENT))
+                );
+
+                arrayList.add(model);
+            } while(cursor.moveToNext());
+        }
+
+        db.close();
+        return arrayList;
+    }
+
+
+    //update infomation table5
+
+    public void updateInfo_Table_5(String id, String assignment, String studentid, String name, String subject, String marks, String comment) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(ConstantsMKASG.ASSIGNMENT, assignment);
+        values.put(ConstantsMKASG.STUDENTID, studentid);
+        values.put(ConstantsMKASG.NAME, name);
+        values.put(ConstantsMKASG.SUBJECT, subject);
+        values.put(ConstantsMKASG.MARKS, marks);
+        values.put(ConstantsMKASG.COMMENT, comment);
+
+        db.update(ConstantsMKASG.TABLE_NAME_5, values, ConstantsMKASG.ID + " = ?", new String[]{id});
+        db.close();
+
+    }
+
+    //table delete_5
+    public void deleteInfo_table_5(String id){
+
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(ConstantsMKASG.TABLE_NAME_5, ConstantsMKASG.ID + " = ? ", new String[]{id});
+        db.close();
+
+    }
+
+
+    public Cursor countTotalMarks() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT SUM(" + ConstantsMKASG.MARKS + ") as Total FROM " + ConstantsMKASG.TABLE_NAME_5, null);
+
+        if (cursor.moveToFirst()) {
+
+            int total = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+            System.out.println("Sssss"+total);
+        }
+        return cursor;
+    }
+
+    public Cursor countTotalMarksAVG() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT AVG(" + ConstantsMKASG.MARKS + ") as Total FROM " + ConstantsMKASG.TABLE_NAME_5, null);
+
+        if (cursor.moveToFirst()) {
+
+            int avg = cursor.getInt(cursor.getColumnIndex("Total"));// get final total
+            System.out.println("AAAA"+avg);
+        }
+        return cursor;
+    }
+
 
 
 }

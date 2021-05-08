@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.panthiya">
 
-    <uses-permission android:name="android.permission.INTERNET"/> <!-- camara permission -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- camara permission -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- external storage permision -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -14,7 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".edit_add_student_teacher"></activity>
+        <activity android:name=".StudentReportView"></activity>
+        <activity android:name=".TeacherReport" />
+        <activity android:name=".EditMarks" />
+        <activity android:name=".marksReportFroTeacher" />
+        <activity android:name=".addMarksForm" />
+        <activity android:name=".edit_add_student_teacher" />
         <activity android:name=".add_student_form" />
         <activity android:name=".edit_teacher_pro" />
         <activity android:name=".Pri_image" />
@@ -33,7 +38,6 @@
         <activity android:name=".edit_assingment" />
         <activity android:name=".view_assignment_student_view" />
         <activity android:name=".student_home">
-
             <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -45,11 +49,15 @@
         <activity android:name=".check_assignment" />
         <activity android:name=".view_upload_assignment" />
         <activity android:name=".login_page">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
         <activity android:name=".makeAssingment">
 
