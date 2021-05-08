@@ -45,11 +45,16 @@
         <activity android:name=".check_assignment" />
         <activity android:name=".view_upload_assignment" />
         <activity android:name=".login_page">
+
+            <!--
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            -->
         </activity>
         <activity android:name=".makeAssingment">
 
@@ -69,13 +74,13 @@
         <activity android:name=".profile" />
         <activity android:name=".main_activity">
 
-            <!--
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            -->
+
         </activity> <!-- crop image working -->
         <meta-data
             android:name="preloaded_fonts"
