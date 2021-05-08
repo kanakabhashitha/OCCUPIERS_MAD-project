@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".addMark">
+    tools:context=".StudentReportView">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,6 +16,7 @@
         <include
             layout="@layout/backwerdmanu"/>
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,17 +25,26 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/addmarksBtn"
+                <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/buttonbg"
-                    android:text="Add Student Mark"
-                    app:backgroundTint="#1836DC" />
+                    android:text="Total Mark"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Avarage"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -41,30 +53,36 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/treportBtn"
+                <TextView
+                    android:id="@+id/totals"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/buttonbg"
-                    android:text="Report"
-                    app:backgroundTint="#ED0B0B" />
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/avgs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="TextView" />
             </LinearLayout>
+
         </LinearLayout>
 
-       <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentvir"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/recylceViewTM"
+            android:layout_margin="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/custom_marks_details"
-            >
+            android:layout_weight="2" />
 
-        </androidx.recyclerview.widget.RecyclerView>
+
+
+
 
     </LinearLayout>
 
-
-
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

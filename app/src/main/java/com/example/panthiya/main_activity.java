@@ -198,14 +198,13 @@ public class main_activity extends AppCompatActivity {
     //check assingment
     public void clickCheckAssignment(View view) {
         Intent intentCheckAssingment = new Intent(this,check_assignment.class);
-        intentCheckAssingment.putExtra("emailT", teacherEmail);
+        //intentCheckAssingment.putExtra("emailT", teacherEmail);
         startActivity(intentCheckAssingment);
     }
 
     //add marks
     public void clickAddMarks(View view) {
         Intent intentAddMark = new Intent(this,addMark.class);
-        intentAddMark.putExtra("emailT", teacherEmail);
         startActivity(intentAddMark);
     }
 

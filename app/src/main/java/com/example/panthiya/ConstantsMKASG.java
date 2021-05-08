@@ -109,4 +109,28 @@ public class ConstantsMKASG {
             + SR_ADD_TIMESTAMP + " TEXT,"
             + SR_UPDATE_TIMESTAMP + " TEXT"
             + ");";
+
+    //maduka workspace
+
+    //db table 5
+    public static final String TABLE_NAME_5 = "Marks_Details";
+    //table column
+    public static final String ID = "ID";
+    public static final String ASSIGNMENT = "assignment";
+    public static final String STUDENTID = "studentID";
+    public static final String NAME = "name";
+    public static final String SUBJECT = "subject";
+    public static final String MARKS = "mark";
+    public static final String COMMENT = "comment";
+
+    //CREATE QUERY for table
+    public static final String CREATE_TABLE_5 = "CREATE TABLE " + TABLE_NAME_5 + " ("
+            + ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + ASSIGNMENT + " TEXT,"
+            + STUDENTID + " TEXT,"
+            + NAME + " TEXT,"
+            + SUBJECT + " TEXT,"
+            + MARKS + " TEXT,"
+            + COMMENT + " TEXT"
+            + ");";
 }
