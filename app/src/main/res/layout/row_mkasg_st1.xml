@@ -51,6 +51,7 @@
                 android:text="Assignment number"
                 android:textSize="18sp"
                 android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
                 />
 
             <TextView
@@ -60,6 +61,7 @@
                 android:text="DeadLine"
                 android:textSize="18sp"
                 android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
                 />
 
 
@@ -74,7 +76,22 @@
             android:background="@null"
             android:layout_toLeftOf="@id/answer_btn"
             android:layout_marginRight="20dp"
+            android:layout_marginTop="17dp"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewtest"
+            android:text="View"
+            android:textColor="#33B5E5"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            android:textSize="11sp"
+            android:layout_marginRight="14dp"
+            android:layout_toLeftOf="@id/ansertext"
+            android:layout_below="@+id/viewbtn"/>
+
 
 
         <ImageButton
@@ -84,8 +101,24 @@
             android:src="@drawable/answer_btn"
             android:background="@null"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="20dp"
             android:layout_alignParentEnd="true"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ansertext"
+            android:text="Answer"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="2dp"
+            android:textSize="11sp"
+            android:layout_marginRight="12dp"
+            android:textColor="#33B5E5"
+            android:textStyle="bold"
+            android:layout_below="@+id/answer_btn"/>
+
 
     </RelativeLayout>
 
