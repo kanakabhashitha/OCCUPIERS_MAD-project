@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.panthiya">
 
-    <uses-permission android:name="android.permission.INTERNET "/>
+    <uses-permission android:name="android.permission.INTERNET"/> <!-- camara permission -->
     <uses-permission android:name="android.permission.CAMERA" /> <!-- external storage permision -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -25,9 +25,10 @@
         <activity android:name=".Preview_assingnmnet_student" />
         <activity android:name=".preview_assingment" />
         <activity android:name=".Add_assignment_form_teacher" />
-
+        <activity android:name=".my_note_student" />
+        <activity android:name=".view_marks_student" />
         <activity android:name=".add_assingment_student" />
-
+        <activity android:name=".student_aboutUs" />
         <activity android:name=".student_profile" />
         <activity android:name=".edit_assingment" />
         <activity android:name=".view_assignment_student_view" />
@@ -42,15 +43,13 @@
             -->
         </activity>
         <activity android:name=".check_assignment" />
-
+        <activity android:name=".view_upload_assignment" />
         <activity android:name=".login_page">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".makeAssingment">
 
@@ -62,12 +61,11 @@
             </intent-filter>
             -->
         </activity>
-
-
-
+        <activity android:name=".addMark" />
+        <activity android:name=".TeacherRecordBook" />
         <activity android:name=".studentRegisterPage" />
         <activity android:name=".register" />
-
+        <activity android:name=".aboutus" />
         <activity android:name=".profile" />
         <activity android:name=".main_activity">
 
@@ -79,7 +77,9 @@
             </intent-filter>
             -->
         </activity> <!-- crop image working -->
-
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
