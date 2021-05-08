@@ -16,52 +16,55 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#27CAEF"
-                app:tabIndicatorColor="#0408F6"
-                app:tabSelectedTextColor="#0408F6"
-                app:tabTextAppearance="@style/TextAppearance.AppCompat.Title"
-                app:tabTextColor="@color/white">
-
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Report" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Marks" />
-
-
-            </com.google.android.material.tabs.TabLayout>
-
-
-            <androidx.viewpager.widget.ViewPager
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/viewpager"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
 
+                <Button
+                    android:id="@+id/addmarksBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/buttonbg"
+                    android:text="Add Student Mark"
+                    app:backgroundTint="#1836DC" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-
-
-
-
-
+                <Button
+                    android:id="@+id/treportBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/buttonbg"
+                    android:text="Report"
+                    app:backgroundTint="#ED0B0B" />
+            </LinearLayout>
         </LinearLayout>
 
+       <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recylceViewTM"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/custom_marks_details"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
+
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

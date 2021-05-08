@@ -20,6 +20,7 @@ public class makeAssingment extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     DatabaseHelperMKASG databaseHelper;
+    private static String teacherEmail;
 
 
 
@@ -38,6 +39,9 @@ public class makeAssingment extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.recylceView);
         databaseHelper = new DatabaseHelperMKASG(this);
+        //db inisialize
+
+        teacherEmail = getIntent().getStringExtra("emailT");
 
         showRercord();
 
@@ -87,6 +91,7 @@ public class makeAssingment extends AppCompatActivity {
 
     public void clickBack(View view) {
         Intent intentback = new Intent(this, main_activity.class);
+        intentback.putExtra("emailT", teacherEmail);
         startActivity(intentback);
     }
 }

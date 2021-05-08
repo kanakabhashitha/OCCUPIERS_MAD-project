@@ -89,6 +89,7 @@
             android:layout_weight="1"
             android:padding="12dp"
             android:text="@string/nave_profile_text"
+
             android:textSize="20sp"
             android:textColor="@color/white"
             android:textStyle="bold"/>
