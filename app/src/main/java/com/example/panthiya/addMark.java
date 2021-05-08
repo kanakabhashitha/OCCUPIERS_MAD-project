@@ -18,10 +18,7 @@ import android.view.View;
 
 public class addMark extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private TabItem tab1,tab2;
-    public PageAdapter5 pagerAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,39 +32,8 @@ public class addMark extends AppCompatActivity {
 
         setContentView(R.layout.activity_add_mark);
 
-        //tabcontroler
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tab1 = (TabItem) findViewById(R.id.tab1);
-        tab2 = (TabItem) findViewById(R.id.tab2);
-        viewPager = findViewById(R.id.viewpager);
 
-        pagerAdapter = new PageAdapter5(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pagerAdapter);
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-
-                if(tab.getPosition() == 0){
-                    pagerAdapter.notifyDataSetChanged();
-                } else if(tab.getPosition() == 1) {
-                    pagerAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
 
