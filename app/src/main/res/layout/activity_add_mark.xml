@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/buttonbg"
+
                     android:text="Add Student Mark"
                     app:backgroundTint="#1836DC" />
             </LinearLayout>
@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:background="@drawable/buttonbg"
+
                     android:text="Report"
                     app:backgroundTint="#ED0B0B" />
             </LinearLayout>
