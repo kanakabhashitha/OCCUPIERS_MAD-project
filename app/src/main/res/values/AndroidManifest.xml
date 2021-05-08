@@ -3,9 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.panthiya">
 
+
     <uses-permission android:name="android.permission.INTERNET "/>
-    <uses-permission android:name="android.permission.CAMERA" /> <!-- external storage permision -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -14,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".edit_add_student_teacher"></activity>
+        <activity android:name=".edit_add_student_teacher"/>
         <activity android:name=".add_student_form" />
         <activity android:name=".edit_teacher_pro" />
         <activity android:name=".Pri_image" />
