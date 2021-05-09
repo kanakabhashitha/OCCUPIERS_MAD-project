@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
         >
 
         <include
@@ -64,6 +63,8 @@
                         android:inputType="textAutoCorrect|number|text"
                         android:textAlignment="center" />
                 </LinearLayout>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
