@@ -2,8 +2,10 @@ package com.example.panthiya;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.KeyEvent;
 import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -14,13 +16,16 @@ import com.google.android.material.tabs.TabLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class TeacherRecordBook extends AppCompatActivity {
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
-    private TabItem tab1,tab2;
-    public PageAdapter6 pagerAdapter;
+    Button tr_add_btn;
+
+    RecyclerView mRecyclerView;
+    DatabaseHelperTRBnSRB databaseHelper;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,45 +38,56 @@ public class TeacherRecordBook extends AppCompatActivity {
 
         setContentView(R.layout.activity_teacher_record_book);
 
-        //tabcontroler
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tab1 = (TabItem) findViewById(R.id.tab1);
-        tab2 = (TabItem) findViewById(R.id.tab2);
-        viewPager = findViewById(R.id.viewpager);
+        tr_add_btn = findViewById(R.id.tr_add_btn);
 
-        pagerAdapter = new PageAdapter6(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pagerAdapter);
+        mRecyclerView = findViewById(R.id.recylceView_trb);
+        databaseHelper = new DatabaseHelperTRBnSRB(this);
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        showRercord();
+
+        tr_add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-
-                if(tab.getPosition() == 0){
-                    pagerAdapter.notifyDataSetChanged();
-                } else if(tab.getPosition() == 1) {
-                    pagerAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onClick(View v) {
+                Intent intent = new Intent(TeacherRecordBook.this, teachers_record_book_add.class);
+                intent.putExtra("EditMode", false);
+                startActivity(intent);
             }
         });
 
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
+
+
+
+    private void showRercord() {
+
+        Adapter_trb adapter = new Adapter_trb(TeacherRecordBook.this, databaseHelper.getAllData(ConstantsTRBnSRB.T_ADD_TIMESTAMP + " DESC"));
+        //because last add record is show on top
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showRercord();
+    }
+
 
 
     public void clickBack(View view) {
         Intent intentback = new Intent(this, main_activity.class);
         startActivity(intentback);
+    }
+
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == event.KEYCODE_BACK) {
+            moveTaskToBack(true);
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }
