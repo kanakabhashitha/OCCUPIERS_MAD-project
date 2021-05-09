@@ -16,10 +16,11 @@
     <string name="drag_text">Upload Your Assignment Here</string>
     <string name="mk_date">Dead Line</string>
     <string name="mk_date_hint">DeadLine(eg:DD/MM/YYYY)</string>
-    <string name="titel">Update Assignment</string>
+    <string name="titel">Add Assignment</string>
     <string name="titel_edit">preview uploaded assignment</string>
     <string name="titel_answer">Submit Your Answer</string>
     <string name="submit_text">Submit</string>
     <string name="titel_edit_student">Change Assignment</string>
+
 
 </resources>

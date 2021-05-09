@@ -238,7 +238,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
 
 
-    private boolean validateDate(){
+    protected boolean validateDate(){
         if(deadLine.length() == 0){
             aDeadLinEd.setError("This field is required");
             return false;
@@ -302,7 +302,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     }
 
 
-    private boolean vlidateAsiingmentNo(){
+    protected boolean vlidateAsiingmentNo(){
         if(number.length() == 0){
             aNumberEt.setError("Assignment field is required");
             return false;
@@ -479,6 +479,8 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
 
 
 
