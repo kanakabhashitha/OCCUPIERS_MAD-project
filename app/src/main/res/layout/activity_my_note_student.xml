@@ -115,6 +115,7 @@
                         android:background="@color/cardview_light_background"
                         android:hint="Enter Current Subjects"
                         android:inputType="textAutoCorrect|number|text"
+
                         android:textAlignment="center" />
                 </LinearLayout>
                 <LinearLayout
