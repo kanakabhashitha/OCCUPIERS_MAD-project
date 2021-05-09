@@ -8,22 +8,33 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import static com.example.panthiya.Add_assignment_form_teacher.setListener;
 
 public class edit_assingment extends AppCompatActivity {
 
@@ -50,6 +61,12 @@ public class edit_assingment extends AppCompatActivity {
     private Uri imageUri;
 
     private boolean editMode = false;
+
+    //calender variable
+    Calendar calendar = Calendar.getInstance();
+    final  int year = calendar.get(Calendar.YEAR);
+    final  int month = calendar.get(Calendar.MONTH);
+    final  int day = calendar.get(Calendar.DAY_OF_MONTH);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +125,56 @@ public class edit_assingment extends AppCompatActivity {
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
+
+        //calender dialog view
+
+        aDeadLinEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        edit_assingment.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth
+                        ,setListener,year,month,day
+                );
+                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datePickerDialog.show();
+            }
+        });
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String date = day+"/"+month+"/"+year;
+                aDeadLinEd.setText(date);
+            }
+        };
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+                String date = day+"/"+month+"/"+year;
+                aDeadLinEd.setText(date);
+            }
+        };
+
+        aDeadLinEd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        edit_assingment.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        month = month + 1;
+                        String date = day+"/"+month+"/"+year;
+                        aDeadLinEd.setText(date);
+                    }
+                }, year,month,day);
+                datePickerDialog.show();
+            }
+        });
+
+
         //initiate database object in main funtion
         dbHelper = new DatabaseHelperMKASG(this);
 
@@ -125,10 +192,6 @@ public class edit_assingment extends AppCompatActivity {
 
                 //click the save button insert data to db
                 getData();
-
-                startActivity(new Intent(edit_assingment.this, makeAssingment.class));
-                Toast.makeText(edit_assingment.this, "Add Successfull", Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -138,21 +201,42 @@ public class edit_assingment extends AppCompatActivity {
         subject = "" + aSubjectEt.getText().toString().trim();
         deadLine = "" + aDeadLinEd.getText().toString().trim();
         description = "" + aDescriptionEt.getText().toString().trim();
+        boolean dateVlid = checkDateFormat1(deadLine);
 
 
         if(editMode){
             String newUpdateTime = ""+System.currentTimeMillis();
 
-            dbHelper.updateInfo(
-                    "" + id,
-                    "" + number,
-                    "" + subject,
-                    "" + deadLine,
-                    "" + description,
-                    "" + imageUri,
-                    "" + addTimeStamp,
-                    "" + updateTimeStamp
-            );
+            try {
+                System.out.println("date__" + dateVlid);
+                if (TextUtils.isEmpty(number)) {
+                    Toast.makeText(getApplicationContext(), "Please enter the assignment Number", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(subject)) {
+                    Toast.makeText(getApplicationContext(), "Please enter the assignment Subject", Toast.LENGTH_SHORT).show();
+                } else if (((dateVlid != true))) {
+                    Toast.makeText(getApplicationContext(), "Please enter the valid assignment Dead Line", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(description)) {
+                    Toast.makeText(getApplicationContext(), "Please enter the assignment Description", Toast.LENGTH_SHORT).show();
+                } else if (imageUri == null) {
+                    Toast.makeText(getApplicationContext(), "Please enter the assignment Image", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    dbHelper.updateInfo(
+                            "" + id,
+                            "" + number,
+                            "" + subject,
+                            "" + deadLine,
+                            "" + description,
+                            "" + imageUri,
+                            "" + addTimeStamp,
+                            "" + updateTimeStamp);
+                    startActivity(new Intent(edit_assingment.this, makeAssingment.class));
+                    Toast.makeText(edit_assingment.this, "Add Successfull", Toast.LENGTH_SHORT).show();
+                }
+            }catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "" + e, Toast.LENGTH_SHORT).show();
+            }
+
         }else {
 
             String timeStamp = "" + System.currentTimeMillis();
@@ -170,6 +254,23 @@ public class edit_assingment extends AppCompatActivity {
 
         //Toast.makeText(this, "Record added to id: "+id, Toast.LENGTH_SHORT).show();
         //startActivity(new Intent(edit_assingment.this, makeAssingment.class));
+    }
+
+
+
+    //date validation type1
+    public Boolean checkDateFormat1(String date){
+        System.out.println("d__"+date);
+        if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
+            return false;
+
+        SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            format.parse(date);
+            return true;
+        }catch (ParseException e){
+            return false;
+        }
     }
 
 
@@ -207,7 +308,6 @@ public class edit_assingment extends AppCompatActivity {
 
         builder.create().show();
     }
-
 
 
     private void pickFromStorage() {

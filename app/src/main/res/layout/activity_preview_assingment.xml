@@ -5,10 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@drawable/back_cover_02">
-
-
+    android:background="@drawable/back_cover_02"
+    tools:context=".preview_assingment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,11 +15,6 @@
 
         <include
             layout="@layout/backwerdmanu"/>
-
-
-
-
-
 
 
         <LinearLayout
@@ -33,11 +26,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="preview uploaded assingment"
-                android:textSize="22dp"
-                android:textColor="#7C4DFF"
+                android:text="@string/titel_edit"
+                android:textSize="18dp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:fontFamily="sans-serif-condensed-medium"
+                android:fontFamily="@font/aclonica"
                 android:layout_marginLeft="11dp"
                 android:layout_marginTop="10dp"
                 />

@@ -15,7 +15,9 @@
     <string name="upload_icon">Upload icon</string>
     <string name="drag_text">Upload Your Assignment Here</string>
     <string name="mk_date">Dead Line</string>
-    <string name="mk_date_hint">Enter Assignment DeadLine</string>
+    <string name="mk_date_hint">DeadLine(eg:DD/MM/YYYY)</string>
+    <string name="titel">Update Assignment</string>
+    <string name="titel_edit">preview uploaded assingment</string>
 
 
 </resources>

@@ -26,6 +26,16 @@
             android:layout_marginTop="15dp"
             android:padding="3dp"
             >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="53dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="19sp"
+                android:fontFamily="@font/aclonica"
+                android:text="@string/titel"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -39,6 +49,8 @@
                 />
 
         </LinearLayout>
+
+
 
 
         <LinearLayout
@@ -127,7 +139,7 @@
                     android:background="@drawable/background1"
                     android:hint="@string/mk_date_hint"
                     android:id="@+id/assignemtDeadLine"
-                    android:inputType="date"
+
                     android:textAlignment="center" />
             </LinearLayout>
 
