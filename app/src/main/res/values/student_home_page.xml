@@ -5,5 +5,5 @@
     <string name="add_assingment_button_student_home">My Assingment Log</string>
     <string name="view_marks_button_student_home">View Marks</string>
     <string name="my_profile_button_student_home">My Profile</string>
-    <string name="my_note_button_student_home">My Note</string>
+    <string name="my_note_button_student_home">Average Planner</string>
 </resources>

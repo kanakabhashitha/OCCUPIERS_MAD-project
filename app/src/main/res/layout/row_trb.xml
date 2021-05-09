@@ -66,23 +66,26 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/tr_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tr_edit"
-            android:src="@drawable/eddit_btn"
-            android:background="@null"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            />
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="20dp"
+            android:background="#FDFCFC"
+            android:src="@drawable/eddit_btn" />
 
         <ImageButton
+            android:id="@+id/tr_viewbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tr_viewbtn"
-            android:src="@drawable/view_icon"
-            android:background="@null"
-            android:layout_toLeftOf="@id/tr_edit"
+            android:layout_marginTop="25dp"
             android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/tr_edit"
+            android:background="#FFFFFF"
+            android:src="@drawable/view_icon"
+
             />
 
     </RelativeLayout>
