@@ -129,7 +129,7 @@ public class register extends AppCompatActivity {
         }else if (!password.equals(rePassword)){
             Toast.makeText(this, "password mismatch", Toast.LENGTH_SHORT).show();
         }else if(dbHelper.checkUserName(email) == true){
-                Toast.makeText(this, "Email alrady excest", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Email alrady excest", Toast.LENGTH_SHORT).show();
         }
         else{
 
@@ -336,7 +336,7 @@ public class register extends AppCompatActivity {
 
 
 
-//navigation work area
+    //navigation work area
     public void clickMenu(View view){
         //open drawer
         main_activity.openDrawer(drawerLayout);
