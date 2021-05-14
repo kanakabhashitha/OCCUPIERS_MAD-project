@@ -14,9 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Panthiya">
-        <activity android:name=".TRB_view"></activity>
-        <activity android:name=".Edit_teacher_record_book" />
-        <activity android:name=".teachers_record_book_add" />
+        <activity android:name=".StudentReportView"></activity>
+        <activity android:name=".TeacherReport" />
+        <activity android:name=".EditMarks" />
+        <activity android:name=".marksReportFroTeacher" />
+        <activity android:name=".addMarksForm" />
+        <activity android:name=".edit_add_student_teacher" />
+        <activity android:name=".add_student_form" />
+        <activity android:name=".edit_teacher_pro" />
         <activity android:name=".Pri_image" />
         <activity android:name=".check_student_answer_view" />
         <activity android:name=".anstudent_answer_view" />
