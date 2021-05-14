@@ -1,6 +1,7 @@
 package com.example.panthiya;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,16 @@ public class teacherReportAdapter extends RecyclerView.Adapter<teacherReportAdap
 
     }
 
+    // method for filtering our recyclerview items.
+    public void filterList(ArrayList<Model_TM> filterllist) {
+        // below line is to add our filtered
+        // list in our course array list.
+        arrayList = filterllist;
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged();
+    }
+
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
@@ -54,6 +65,15 @@ public class teacherReportAdapter extends RecyclerView.Adapter<teacherReportAdap
         holder.Studentid.setText(studentid);
         holder.Subject.setText(subject);
         holder.Mark.setText(mark);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent summary = new Intent(context,MarksSummaryActivity.class);
+                summary.putExtra("studentId",studentid);
+                context.startActivity(summary);
+            }
+        });
     }
 
 

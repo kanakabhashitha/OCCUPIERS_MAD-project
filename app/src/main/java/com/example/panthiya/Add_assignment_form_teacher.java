@@ -149,6 +149,10 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         });
 
 
+
+
+
+
         //initiate database object in main funtion
         dbHelper = new DatabaseHelperMKASG(this);
 
@@ -302,6 +306,30 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
             aDeadLinEd.setError("This field is required");
             return false;
         }
+       /* System.out.println("" + tr_donePoints.getText().toString().trim());
+        if(tr_donePoints.length() == 0){
+            tr_donePoints.setError("This field is required");
+            return false;
+        }
+        String donePoints = "" + tr_donePoints.getText().toString().trim();
+        if(tr_donePoints.length() != 0){
+            if(!(0 < Integer.parseInt(donePoints) && Integer.parseInt(donePoints) < 11)){
+                tr_donePoints.setError("Value should be between 0 and 10");
+                return false;
+            }
+        }
+        if(tr_exceptedPoint.length() == 0){
+            tr_exceptedPoint.setError("This field is required");
+            return false;
+        }
+
+        String expPoints = "" + tr_exceptedPoint.getText().toString().trim();
+        if(tr_exceptedPoint.length() != 0){
+            if(!(0 < Integer.parseInt(expPoints) && Integer.parseInt(expPoints) < 11)){
+                tr_exceptedPoint.setError("Value should be between 0 and 10");
+                return false;
+            }
+        }*/
 
         return true;
     }

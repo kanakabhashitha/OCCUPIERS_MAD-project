@@ -11,7 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/back_cover_01"
+       >
 
         <include
             layout="@layout/backwerdmanu"/>
@@ -33,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Total Mark"
+                    android:text="Student total Mark"
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
@@ -42,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Avarage"
+                    android:text="Student avarage"
                     android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -64,7 +66,7 @@
                     android:id="@+id/avgs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="20dp"
                     android:text="TextView" />
             </LinearLayout>
 

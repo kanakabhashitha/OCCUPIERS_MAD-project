@@ -88,17 +88,17 @@ public class profile extends AppCompatActivity {
             } while (cursor.moveToNext());
         }
 
-                fName = pfName.getText().toString().trim();
-                lName = pLname.getText().toString().trim();
-                password = pPassword.getText().toString().trim();
-                email = pEmail.getText().toString().trim();
+        fName = pfName.getText().toString().trim();
+        lName = pLname.getText().toString().trim();
+        password = pPassword.getText().toString().trim();
+        email = pEmail.getText().toString().trim();
 
 
         updateInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-              Intent intent = new Intent(profile.this, edit_teacher_pro.class);
+                Intent intent = new Intent(profile.this, edit_teacher_pro.class);
                 intent.putExtra("emailT", email);
                 intent.putExtra("fname", fName);
                 intent.putExtra("lname", lName);

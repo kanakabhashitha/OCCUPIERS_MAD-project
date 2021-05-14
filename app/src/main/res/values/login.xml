@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loginbtn">Login</string>
+    <string name="student_button">Student</string>
+    <string name="teacher_button">Teacher</string>
+    <string name="password_login1">Password</string>
+    <string name="username_login">User Name</string>
+    <string name="main_pic_login">Picture</string>
+
+</resources>

@@ -177,7 +177,9 @@ public class student_home extends AppCompatActivity {
     }
 
     public void clickViewMarkAssignment(View view) {
+
         Intent intentadd_view_marks_student = new Intent(this,view_marks_student.class);
+        intentadd_view_marks_student.putExtra("studentId","120");
         startActivity(intentadd_view_marks_student);
     }
 

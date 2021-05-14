@@ -61,6 +61,15 @@ public class Adapter_TM extends RecyclerView.Adapter<Adapter_TM.Holder> {
         holder.Subject.setText(subject);
         holder.Mark.setText(mark);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent summary = new Intent(context,MarksSummaryActivity.class);
+                summary.putExtra("studentId",studentid);
+                context.startActivity(summary);
+            }
+        });
+
   holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +113,7 @@ public class Adapter_TM extends RecyclerView.Adapter<Adapter_TM.Holder> {
         builder.setTitle("Delete");
         builder.setMessage("Are you want to delete ?");
         builder.setCancelable(false);
-        builder.setIcon(R.drawable.delete);
+        builder.setIcon(R.drawable.delete_icon);
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -138,7 +147,7 @@ public class Adapter_TM extends RecyclerView.Adapter<Adapter_TM.Holder> {
         builder.setTitle("Update");
         builder.setMessage("Are you want update ?");
         builder.setCancelable(false);
-        builder.setIcon(R.drawable.edit);
+        builder.setIcon(R.drawable.eddit_btn);
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override

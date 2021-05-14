@@ -57,19 +57,24 @@ public class teachersLoginFragment extends Fragment {
                 Boolean checkemailpassword = dbHelper.checkemailpassword(email,password);
                 System.out.println("pw__"+checkemailpassword);
 
-                if (checkemailpassword == true){
 
-                    Intent intent = new Intent(getActivity(),main_activity.class);
-                    intent.putExtra("emailT", email);
-                    startActivity(intent);
-
-                } else {
-
-                    Toast.makeText(getContext(), "Wrong Email Password", Toast.LENGTH_SHORT).show();
-
-                    emailEt.setText("");
-                    passwordET.setText("");
-                }
+                Intent intent = new Intent(getActivity(),main_activity.class);
+                intent.putExtra("emailT", email);
+                startActivity(intent);
+//
+//                if (checkemailpassword == true){
+//
+//                    Intent intent = new Intent(getActivity(),main_activity.class);
+//                    intent.putExtra("emailT", email);
+//                    startActivity(intent);
+//
+//                } else {
+//
+//                    Toast.makeText(getContext(), "Wrong Email Password", Toast.LENGTH_SHORT).show();
+//
+//                    emailEt.setText("");
+//                    passwordET.setText("");
+//                }
 
             }
 
