@@ -61,6 +61,15 @@ public class Adapter_TM extends RecyclerView.Adapter<Adapter_TM.Holder> {
         holder.Subject.setText(subject);
         holder.Mark.setText(mark);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent summary = new Intent(context,MarksSummaryActivity.class);
+                summary.putExtra("studentId",studentid);
+                context.startActivity(summary);
+            }
+        });
+
   holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
