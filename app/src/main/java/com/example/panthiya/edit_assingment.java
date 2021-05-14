@@ -47,7 +47,7 @@ public class edit_assingment extends AppCompatActivity {
 
 
 
-    private String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp;
+    private String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp, atfk, teacherEmail;
     private DatabaseHelperMKASG dbHelper;
 
 
@@ -89,9 +89,13 @@ public class edit_assingment extends AppCompatActivity {
 
         saveInfo = findViewById(R.id.save_btn);
 
+       // teacherEmail = getIntent().getStringExtra("emailT");
+
         Intent intent = getIntent();
         editMode = intent.getBooleanExtra("EditMode", editMode);
         id = intent.getStringExtra("ID");
+        atfk = intent.getStringExtra("ATFK_ID");
+        System.out.println("fuk__"+atfk);
         subject = intent.getStringExtra("SUBJECT");
         number = intent.getStringExtra("NUMBER");
         deadLine = intent.getStringExtra("DEADLINE");
@@ -104,6 +108,7 @@ public class edit_assingment extends AppCompatActivity {
         if(editMode){
             editMode = intent.getBooleanExtra("EditMode", editMode);
             id = intent.getStringExtra("ID");
+            atfk = intent.getStringExtra("ATFK_ID");
             subject = intent.getStringExtra("SUBJECT");
             number = intent.getStringExtra("NUMBER");
             deadLine = intent.getStringExtra("DEADLINE");
@@ -197,6 +202,9 @@ public class edit_assingment extends AppCompatActivity {
             }
         });
     }
+
+
+
     private void getData() {
 
         number = "" + aNumberEt.getText().toString().trim();
@@ -205,6 +213,7 @@ public class edit_assingment extends AppCompatActivity {
         description = "" + aDescriptionEt.getText().toString().trim();
         boolean dateVlid = validateDate();
         boolean numValidate = vlidateAsiingmentNo();
+        //atfk = teacherEmail;
 
 
         if(editMode){
@@ -228,6 +237,7 @@ public class edit_assingment extends AppCompatActivity {
 
                     dbHelper.updateInfo(
                             "" + id,
+                            "" + atfk,
                             "" + number,
                             "" + subject,
                             "" + deadLine,
@@ -238,7 +248,9 @@ public class edit_assingment extends AppCompatActivity {
 
                             );
 
-                    startActivity(new Intent(edit_assingment.this, makeAssingment.class));
+                    Intent intent =  new Intent(edit_assingment.this, makeAssingment.class);
+                    intent.putExtra("emailT", atfk);
+                    startActivity(intent);
                     Toast.makeText(edit_assingment.this, "Add Successfull", Toast.LENGTH_SHORT).show();
                 }
             }catch (Exception e) {
@@ -251,6 +263,7 @@ public class edit_assingment extends AppCompatActivity {
 
             dbHelper.insertInfo(
                     "" + number,
+                    "" + atfk,
                     "" + subject,
                     "" + deadLine,
                     "" + description,

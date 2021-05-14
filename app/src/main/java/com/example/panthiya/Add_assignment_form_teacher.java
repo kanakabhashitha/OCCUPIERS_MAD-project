@@ -48,7 +48,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     Button saveInfo;
     public static DatePickerDialog.OnDateSetListener setListener;
 
-    private String number, subject, deadLine, description, timeStamp;
+    private static String number, subject, deadLine, description, timeStamp, atfk, teacherEmail;
     private DatabaseHelperMKASG dbHelper;
 
     private Pattern pattern;
@@ -100,7 +100,6 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
 
-
         //calender dialog view
 
         aDeadLinEd.setOnClickListener(new View.OnClickListener() {
@@ -150,12 +149,14 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         });
 
 
-
-
-
-
         //initiate database object in main funtion
         dbHelper = new DatabaseHelperMKASG(this);
+
+
+        //foregin key catch
+        teacherEmail = getIntent().getStringExtra("emailT");
+
+
 
         aImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,7 +186,8 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         description = "" + aDescriptionEt.getText().toString().trim();
         timeStamp = "" + getDateTime();
         boolean dateVlid = validateDate();
-        boolean numValidate = vlidateAsiingmentNo();
+        boolean numValidate = vlidateAsiingmentNo(number);
+
 
 
         //validate uinput data
@@ -209,6 +211,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
                 dbHelper.insertInfo(
                         "" + number,
+                        "" + teacherEmail,
                         "" + subject,
                         "" + deadLine,
                         "" + description,
@@ -217,7 +220,9 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
                         "" + timeStamp
                 );
 
-                startActivity(new Intent(Add_assignment_form_teacher.this, makeAssingment.class));
+                Intent intent = new Intent(Add_assignment_form_teacher.this, makeAssingment.class);
+                intent.putExtra("emailT", teacherEmail);
+                startActivity(intent);
                 Toast.makeText(Add_assignment_form_teacher.this, "Add Successfull", Toast.LENGTH_SHORT).show();
             }
         }catch (Exception e){
@@ -302,12 +307,12 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     }
 
 
-    protected boolean vlidateAsiingmentNo(){
+    protected boolean vlidateAsiingmentNo(String number){
         if(number.length() == 0){
             aNumberEt.setError("Assignment field is required");
             return false;
         }
-        String number = "" + aNumberEt.getText().toString().trim();
+          number = "" + aNumberEt.getText().toString().trim();
         if(number.length() != 0){
             if(!(0 < Integer.parseInt(number) && Integer.parseInt(number) < 100)){
                 aNumberEt.setError("Number should be between 0 and 10");

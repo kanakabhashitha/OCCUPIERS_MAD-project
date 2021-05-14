@@ -42,7 +42,6 @@ public class add_student_form extends AppCompatActivity {
         teacherEmail = getIntent().getStringExtra("emailT");
 
 
-
         pSRemail = findViewById(R.id.sr_email);
         pSRid = findViewById(R.id.sr_id);
         pSRfname = findViewById(R.id.sr_fName);

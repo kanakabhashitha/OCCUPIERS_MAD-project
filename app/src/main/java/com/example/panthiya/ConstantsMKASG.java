@@ -13,6 +13,7 @@ public class ConstantsMKASG {
 
     //table column
     public static final String A_ID = "ID";
+    public static final String ATFK_ID = "ATFK_ID";
     public static final String A_NUMBER = "NUMBER";
     public static final String A_SUBJECT = "SUBJECT";
     public static final String A_DEADLINE = "DEADLINE";
@@ -60,6 +61,7 @@ public class ConstantsMKASG {
     //CREATE QUERY for table
     public static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("
             + A_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + ATFK_ID + " STRING REFERENCES " + T_ID + ","
             + A_NUMBER + " TEXT,"
             + A_SUBJECT + " TEXT,"
             + A_DEADLINE + " TEXT,"

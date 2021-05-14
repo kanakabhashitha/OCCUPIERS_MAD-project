@@ -42,11 +42,12 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
     //insert information
 
-    public long insertInfo(String number, String subject, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
+    public long insertInfo(String number, String atfk, String subject, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        values.put(ConstantsMKASG.ATFK_ID, atfk);
         values.put(ConstantsMKASG.A_NUMBER, number);
         values.put(ConstantsMKASG.A_SUBJECT, subject);
         values.put(ConstantsMKASG.A_DEADLINE, deadLine);
@@ -64,11 +65,12 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
     //update information techers table
 
-    public void updateInfo(String id, String number, String subject, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
+    public void updateInfo(String id, String atfk, String number, String subject, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        values.put(ConstantsMKASG.ATFK_ID, atfk);
         values.put(ConstantsMKASG.A_NUMBER, number);
         values.put(ConstantsMKASG.A_SUBJECT, subject);
         values.put(ConstantsMKASG.A_DEADLINE, deadLine);
@@ -113,10 +115,6 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
     }
 
 
-
-
-
-
     //arryList table 1
     public ArrayList<Model_mkasg> getAllData(String orderBy){
 
@@ -136,6 +134,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
                 Model_mkasg model = new Model_mkasg(
 
                         ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.A_ID)),
+                        ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.ATFK_ID)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_IMAGE)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_NUMBER)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_SUBJECT)),
