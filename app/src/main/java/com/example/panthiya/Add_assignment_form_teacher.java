@@ -195,11 +195,12 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Please enter the assignment Number", Toast.LENGTH_SHORT).show();
             }
             else if(TextUtils.isEmpty(subject)){
-                aSubjectEt.setError("This field is required");
+                aSubjectEt.setError("Subject field is required");
                 Toast.makeText(getApplicationContext(), "Please enter the assignment Subject", Toast.LENGTH_SHORT).show();
             }else if( ( (dateVlid != true) ) ){
                 Toast.makeText(getApplicationContext(), "Please enter the valid assignment Dead Line", Toast.LENGTH_SHORT).show();
             }else if(TextUtils.isEmpty(description)){
+                aDescriptionEt.setError("Description field is required");
                 Toast.makeText(getApplicationContext(), "Please enter the assignment Description", Toast.LENGTH_SHORT).show();
             }else if(imageUri == null){
                 Toast.makeText(getApplicationContext(), "Please enter the assignment Image", Toast.LENGTH_SHORT).show();
@@ -235,26 +236,9 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         return dateFormat.format(date);
     }
 
-    // full date validate if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
-
-    //date validation
-   /* public Boolean checkDateFormat1(String date){
-        System.out.println("d__"+date);
-        if (date == null || !date.matches("^(0[0-9]||1[0-2])/([0-2][0-9]||3[0-1])/([0-9][0-9])?[0-9][0-9]$"))
-            return false;
-
-        SimpleDateFormat format=new SimpleDateFormat("d/M/yyyy");
-        try {
-            format.parse(date);
-            return true;
-        }catch (ParseException e){
-            return false;
-        }
-    }*/
 
 
-
-    private boolean validateDate(){
+    protected boolean validateDate(){
         if(deadLine.length() == 0){
             aDeadLinEd.setError("This field is required");
             return false;
@@ -313,65 +297,25 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
             aDeadLinEd.setError("This field is required");
             return false;
         }
-       /* System.out.println("" + tr_donePoints.getText().toString().trim());
-        if(tr_donePoints.length() == 0){
-            tr_donePoints.setError("This field is required");
-            return false;
-        }
-        String donePoints = "" + tr_donePoints.getText().toString().trim();
-        if(tr_donePoints.length() != 0){
-            if(!(0 < Integer.parseInt(donePoints) && Integer.parseInt(donePoints) < 11)){
-                tr_donePoints.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }
-        if(tr_exceptedPoint.length() == 0){
-            tr_exceptedPoint.setError("This field is required");
-            return false;
-        }
-
-        String expPoints = "" + tr_exceptedPoint.getText().toString().trim();
-        if(tr_exceptedPoint.length() != 0){
-            if(!(0 < Integer.parseInt(expPoints) && Integer.parseInt(expPoints) < 11)){
-                tr_exceptedPoint.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }*/
 
         return true;
     }
 
 
-    private boolean vlidateAsiingmentNo(){
+    protected boolean vlidateAsiingmentNo(){
         if(number.length() == 0){
-            aNumberEt.setError("This field is required");
+            aNumberEt.setError("Assignment field is required");
             return false;
         }
         String number = "" + aNumberEt.getText().toString().trim();
         if(number.length() != 0){
             if(!(0 < Integer.parseInt(number) && Integer.parseInt(number) < 100)){
-                aNumberEt.setError("Value should be between 0 and 10");
+                aNumberEt.setError("Number should be between 0 and 10");
                 return false;
             }
         }
         return true;
     }
-
-
-  /*  private boolean vlidateAsiingmentNo(){
-        if(number.length() == 0){
-            aNumberEt.setError("This field is required");
-            return false;
-        }
-        String number = "" + aNumberEt.getText().toString().trim();
-        if(number.length() != 0){
-            if(!(0 < Integer.parseInt(number) && Integer.parseInt(number) < 100)){
-                aNumberEt.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }
-        return true;
-    }*/
 
 
 
@@ -535,6 +479,8 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
 
 
 

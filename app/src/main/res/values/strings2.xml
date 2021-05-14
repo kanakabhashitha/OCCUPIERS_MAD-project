@@ -1,0 +1,30 @@
+<resources>
+    
+    <string name="todo">TODO</string>
+    <string name="name">Name</string>
+    <string name="user_name">User name</string>
+    <string name="username">Username</string>
+    <string name="reg_btn">Register</string>
+    <string name="re_enter_password">re-enter password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="password">Password</string>
+    <string name="button">Button</string>
+    <string name="save_btn">Save</string>
+    <string name="textview">TextView</string>
+    <string name="reg_email">Email</string>
+    <string name="det_username">User Name</string>
+    <string name="det_password">Password</string>
+    <string name="det_repassword">Re-Enter Password</string>
+    <string name="det_age">Age</string>
+    <string name="det_grade">Grade</string>
+    <string name="det_st_id">Student id</string>
+    <string name="det_phone">Phone</string>
+    <string name="det_email">Email</string>
+    <string name="det_edit_btn">Edit</string>
+    <string name="det_dlt_btn">Delete</string>
+    <string name="det_pic">Picture</string>
+    <string name="add_save_stu_btn">Save</string>
+
+
+</resources>
