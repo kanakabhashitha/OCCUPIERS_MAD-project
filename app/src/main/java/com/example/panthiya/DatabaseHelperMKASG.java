@@ -116,15 +116,15 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
 
     //arryList table 1
-    public ArrayList<Model_mkasg> getAllData(String orderBy){
+    public ArrayList<Model_mkasg> getAllData(String atfk){
 
         ArrayList<Model_mkasg> arrayList = new ArrayList<>();
 
         //query for select all info in databse
-        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME + " ORDER BY " + orderBy;
-
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME + " WHERE TFK_ID = ? " + " ORDER BY " + ConstantsMKASG.T_ADD_TIMESTAMP + " DESC",
+                new String[]{atfk});
+
 
         //select all info from databes new gte the data from column
         if(cursor.moveToNext()){
@@ -134,7 +134,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
                 Model_mkasg model = new Model_mkasg(
 
                         ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.A_ID)),
-                        ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.ATFK_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.ATFK_ID)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_IMAGE)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_NUMBER)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_SUBJECT)),
@@ -153,6 +153,41 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
     }
 
 
+    //arryList table 1 for student viwe for assingment
+    public ArrayList<Model_mkasg> getAllData_for_student_view(String orderBy){
+
+        ArrayList<Model_mkasg> arrayList = new ArrayList<>();
+
+        //query for select all info in databse
+        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME + " ORDER BY " + orderBy;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //select all info from databes new gte the data from column
+        if(cursor.moveToNext()){
+
+            do{
+
+                Model_mkasg model = new Model_mkasg(
+
+                        ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.A_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.ATFK_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_IMAGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_NUMBER)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_SUBJECT)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_DEADLINE)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_DESCRIPTION)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_ADD_TIMESTAMP)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_UPDATE_TIMESTAMP))
+                );
+
+                arrayList.add(model);
+            } while(cursor.moveToNext());
+        }
+
+        db.close();
+        return arrayList;
+    }
 
 
 

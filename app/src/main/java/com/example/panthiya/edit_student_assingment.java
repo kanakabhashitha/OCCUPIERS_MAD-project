@@ -36,7 +36,7 @@ public class edit_student_assingment extends AppCompatActivity {
     Button saveInfo;
 
 
-    private String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp;
+    private static String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp;
     private DatabaseHelperMKASG dbHelper;
 
 
@@ -128,7 +128,8 @@ public class edit_student_assingment extends AppCompatActivity {
                 //click the save button insert data to db
                 getData();
 
-                startActivity(new Intent(edit_student_assingment.this, my_assignment_log.class));
+                Intent intent  =  new Intent(edit_student_assingment.this, my_assignment_log.class);
+                startActivity(intent);
                 Toast.makeText(edit_student_assingment.this, "Add Successfull", Toast.LENGTH_SHORT).show();
 
             }

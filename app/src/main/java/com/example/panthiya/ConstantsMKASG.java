@@ -13,7 +13,7 @@ public class ConstantsMKASG {
 
     //table column
     public static final String A_ID = "ID";
-    public static final String ATFK_ID = "ATFK_ID";
+    public static final String ATFK_ID = "TFK_ID";
     public static final String A_NUMBER = "NUMBER";
     public static final String A_SUBJECT = "SUBJECT";
     public static final String A_DEADLINE = "DEADLINE";

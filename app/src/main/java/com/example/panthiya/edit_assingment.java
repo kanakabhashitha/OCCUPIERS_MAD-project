@@ -285,6 +285,7 @@ public class edit_assingment extends AppCompatActivity {
         return dateFormat.format(date);
     }
 
+    // validate date
     private boolean validateDate(){
         if(deadLine.length() == 0){
             aDeadLinEd.setError("This field is required");
@@ -348,6 +349,7 @@ public class edit_assingment extends AppCompatActivity {
         return true;
     }
 
+    //validate assingment number
     private boolean vlidateAsiingmentNo(){
         if(number.length() == 0){
             aNumberEt.setError("Assignment field is required");
@@ -363,9 +365,10 @@ public class edit_assingment extends AppCompatActivity {
         return true;
     }
 
+    //option dialog
     private void imagePickDialog() {
 
-        String[] options = {"Camera", "Gallery"};
+        String[] options = {"Capture Assignment", "Select From Gallery"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -398,7 +401,7 @@ public class edit_assingment extends AppCompatActivity {
         builder.create().show();
     }
 
-
+    //pick from storage
     private void pickFromStorage() {
         //get image from gallary
         Intent gallaryIntent = new Intent(Intent.ACTION_PICK);
@@ -409,6 +412,7 @@ public class edit_assingment extends AppCompatActivity {
 
     }
 
+    //pick from camera
     private void pickFromCamera() {
 
         //get image from camera
@@ -423,7 +427,7 @@ public class edit_assingment extends AppCompatActivity {
         System.out.println("image__" + imageUri);
     }
 
-
+    //check storage prmission
     private boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == (PackageManager.PERMISSION_GRANTED);
@@ -431,12 +435,14 @@ public class edit_assingment extends AppCompatActivity {
 
     }
 
+    //get storage permission
     private void requestStoragePermission() {
 
         ActivityCompat.requestPermissions(this, storagePermissions, STORAGE_REQUEST_CODE);
 
     }
 
+    //check camera permision
     private boolean checkCmaraPermission() {
 
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -448,6 +454,7 @@ public class edit_assingment extends AppCompatActivity {
         return result && resulti;
     }
 
+    //get cammera permisson
     private void requestCameraPermission() {
         ActivityCompat.requestPermissions(this, cameraPermissions, CAMERA_REQUEST_CODE);
     }
@@ -527,7 +534,7 @@ public class edit_assingment extends AppCompatActivity {
 
 
 
-
+    //go back
     public void clickBack(View view) {
         Intent intentback = new Intent(this, makeAssingment.class);
         startActivity(intentback);

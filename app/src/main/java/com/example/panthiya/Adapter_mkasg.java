@@ -58,6 +58,7 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
         final String description = model.getDescription();
         final String addTimeStamp = model.getAddTimeStamp();
         final String updateTimeStamp = model.getUpdateTimestamp();
+        System.out.print("foiring__"+atfk);
 
         //set views
         holder.assignmentImage.setImageURI(Uri.parse(image));

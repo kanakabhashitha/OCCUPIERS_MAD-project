@@ -15,6 +15,7 @@ public class view_assignment_student_view extends AppCompatActivity {
     RecyclerView mRecyclerView;
     DatabaseHelperMKASG databaseHelper;
     TextView svBtn;
+    private static String studentID;
 
 
 
@@ -32,6 +33,7 @@ public class view_assignment_student_view extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recylceView_s1);
         databaseHelper = new DatabaseHelperMKASG(this);
 
+        studentID = getIntent().getStringExtra("studentSid");
 
         showRercord();
 
@@ -42,7 +44,7 @@ public class view_assignment_student_view extends AppCompatActivity {
 
     private void showRercord() {
 
-        Adapter_mkasg_st1 adapter = new Adapter_mkasg_st1(view_assignment_student_view.this, databaseHelper.getAllData(ConstantsMKASG.A_ADD_TIMESTAMP + " DESC"));
+        Adapter_mkasg_st1 adapter = new Adapter_mkasg_st1(view_assignment_student_view.this, databaseHelper.getAllData_for_student_view(ConstantsMKASG.A_ADD_TIMESTAMP + " DESC"));
         //because last add record is show on top
         mRecyclerView.setAdapter(adapter);
     }

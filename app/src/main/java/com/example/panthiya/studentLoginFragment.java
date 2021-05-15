@@ -52,25 +52,21 @@ public class studentLoginFragment extends Fragment {
                 Boolean checkStudentUserName = dbHelper.checkSudentemailpassword(uid,password);
                 System.out.println("pw__"+checkStudentUserName);
 
-                Intent intent = new Intent(getActivity(),student_home.class);
-                System.out.println("sE___"+password);
-                intent.putExtra("studentSid", uid);
-                startActivity(intent);
-//
-//                if (checkStudentUserName == true){
-//
-//                    Intent intent = new Intent(getActivity(),student_home.class);
-//                    System.out.println("sE___"+password);
-//                    intent.putExtra("studentSid", uid);
-//                    startActivity(intent);
-//
-//                } else {
-//
-//                    Toast.makeText(getContext(), "Wrong Email Password", Toast.LENGTH_SHORT).show();
-//
-//                    userIdEt.setText("");
-//                    passwordET.setText("");
-//                }
+
+               if (checkStudentUserName == true){
+
+                    Intent intent = new Intent(getActivity(),student_home.class);
+                    System.out.println("sE___"+password);
+                    intent.putExtra("studentSid", uid);
+                    startActivity(intent);
+
+                } else {
+
+                    Toast.makeText(getContext(), "Wrong Email Password", Toast.LENGTH_SHORT).show();
+
+                    userIdEt.setText("");
+                    passwordET.setText("");
+                }
 
             }
 

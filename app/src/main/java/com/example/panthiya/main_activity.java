@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -133,7 +134,7 @@ public class main_activity extends AppCompatActivity {
         //set title
         builder.setTitle("Logout");
         //set massage
-        builder.setMessage("Are you sure, you want to logout ?");
+        builder.setMessage("Are you sure, you want to Exit ?");
         //positive yes button
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -158,6 +159,38 @@ public class main_activity extends AppCompatActivity {
         builder.show();
 
     }
+
+
+    public void clickswitchTouser(View view) {
+        //initializ alaert dialog
+        AlertDialog.Builder builder =  new AlertDialog.Builder(main_activity.this);
+        //set title
+        builder.setTitle("Logout");
+        //set massage
+        builder.setMessage("Are you sure, you want to logout ?");
+        //positive yes button
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(main_activity.this, login_page.class);
+                startActivity(intent);
+            }
+        });
+
+        //Negetive no button
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //dismiss dialog
+                dialog.dismiss();
+            }
+        });
+
+        //show dialog
+        builder.show();
+
+    }
+
 
 
 
@@ -198,7 +231,7 @@ public class main_activity extends AppCompatActivity {
     //check assingment
     public void clickCheckAssignment(View view) {
         Intent intentCheckAssingment = new Intent(this,check_assignment.class);
-        //intentCheckAssingment.putExtra("emailT", teacherEmail);
+        intentCheckAssingment.putExtra("emailT", teacherEmail);
         startActivity(intentCheckAssingment);
     }
 

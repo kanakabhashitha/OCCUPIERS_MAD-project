@@ -48,6 +48,7 @@ public class Adapter_mkasg_st1 extends RecyclerView.Adapter<Adapter_mkasg_st1.Ho
         Model_mkasg model = arrayList.get(position);
         //get for view
         final String id = model.getId();
+        final String atfk = model.getAtfk();
         final String image = model.getImage();
         final String subject = model.getSubject();
         final String number = model.getNumber();
@@ -63,6 +64,7 @@ public class Adapter_mkasg_st1 extends RecyclerView.Adapter<Adapter_mkasg_st1.Ho
         holder.deadLine.setText(deadLine);
 
 
+
       holder.viewButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -70,6 +72,7 @@ public class Adapter_mkasg_st1 extends RecyclerView.Adapter<Adapter_mkasg_st1.Ho
 
                 Intent intent = new Intent(context, Preview_assingnmnet_student.class );
                 intent.putExtra("ID", id);
+                intent.putExtra("ATFK_ID", atfk);
                 intent.putExtra("SUBJECT", subject );
                 intent.putExtra("NUMBER", number);
                 intent.putExtra("DEADLINE", deadLine);
@@ -78,7 +81,6 @@ public class Adapter_mkasg_st1 extends RecyclerView.Adapter<Adapter_mkasg_st1.Ho
                 intent.putExtra("ADD_TIMESTAMP", addTimeStamp);
                 intent.putExtra("UPDATE_TIMESTAMP", updateTimeStamp);
                 intent.putExtra("EditMode", true);
-
                 context.startActivity(intent);
             }
         });
@@ -113,7 +115,7 @@ public class Adapter_mkasg_st1 extends RecyclerView.Adapter<Adapter_mkasg_st1.Ho
     class Holder extends RecyclerView.ViewHolder{
 
         ImageView assignmentImage;
-        TextView subject, number, deadLine, description, addtime;
+        TextView subject, number, deadLine, description, addtime, teacher_email;
         ImageButton editButton, deleteButton, viewButton, answerButton;
 
 
@@ -128,9 +130,9 @@ public class Adapter_mkasg_st1 extends RecyclerView.Adapter<Adapter_mkasg_st1.Ho
             editButton = itemView.findViewById(R.id.editbtn);
             deleteButton = itemView.findViewById(R.id.deletebtn);
             viewButton = itemView.findViewById(R.id.viewbtn);
-            addtime = itemView.findViewById(R.id.add_date_time);
             answerButton = itemView.findViewById(R.id.answer_btn);
-
+            addtime = itemView.findViewById(R.id.add_date_time);
+            teacher_email = itemView.findViewById(R.id.teacher_email);
         }
     }
 }

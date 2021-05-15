@@ -42,7 +42,7 @@ import java.util.regex.Pattern;
 
 public class Add_assignment_form_teacher extends AppCompatActivity {
 
-
+    //insialize variables
     private ImageView aImageView;
     private EditText aNumberEt, aSubjectEt, aDeadLinEd, aDescriptionEt;
     Button saveInfo;
@@ -149,10 +149,6 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         });
 
 
-
-
-
-
         //initiate database object in main funtion
         dbHelper = new DatabaseHelperMKASG(this);
 
@@ -181,7 +177,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     }
 
 
-    //validate and insert db
+    // some validate and insert db
     private void getData() {
 
         number = "" + aNumberEt.getText().toString().trim();
@@ -194,7 +190,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
 
 
-        //validate uinput data
+        //validate input data
         try{
             System.out.println("date__"+dateVlid);
             if(numValidate !=true){
@@ -247,6 +243,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
 
 
+    //validate date
     protected boolean validateDate(){
         if(deadLine.length() == 0){
             aDeadLinEd.setError("This field is required");
@@ -306,41 +303,18 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
             aDeadLinEd.setError("This field is required");
             return false;
         }
-       /* System.out.println("" + tr_donePoints.getText().toString().trim());
-        if(tr_donePoints.length() == 0){
-            tr_donePoints.setError("This field is required");
-            return false;
-        }
-        String donePoints = "" + tr_donePoints.getText().toString().trim();
-        if(tr_donePoints.length() != 0){
-            if(!(0 < Integer.parseInt(donePoints) && Integer.parseInt(donePoints) < 11)){
-                tr_donePoints.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }
-        if(tr_exceptedPoint.length() == 0){
-            tr_exceptedPoint.setError("This field is required");
-            return false;
-        }
-
-        String expPoints = "" + tr_exceptedPoint.getText().toString().trim();
-        if(tr_exceptedPoint.length() != 0){
-            if(!(0 < Integer.parseInt(expPoints) && Integer.parseInt(expPoints) < 11)){
-                tr_exceptedPoint.setError("Value should be between 0 and 10");
-                return false;
-            }
-        }*/
 
         return true;
     }
 
 
+    //validate assingemnet number
     protected boolean vlidateAsiingmentNo(String number){
         if(number.length() == 0){
             aNumberEt.setError("Assignment field is required");
             return false;
         }
-          number = "" + aNumberEt.getText().toString().trim();
+        number = "" + aNumberEt.getText().toString().trim();
         if(number.length() != 0){
             if(!(0 < Integer.parseInt(number) && Integer.parseInt(number) < 100)){
                 aNumberEt.setError("Number should be between 0 and 10");
@@ -351,10 +325,10 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
     }
 
 
-
+    //optio dialog
     private void imagePickDialog() {
 
-        String[] options = {"Camera", "Gallery"};
+        String[] options = {"Capture Assignment ", "Select From Gallery"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -387,6 +361,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         builder.create().show();
     }
 
+    //pick from storage
     private void pickFromStorage() {
         //get image from gallary
         Intent gallaryIntent = new Intent(Intent.ACTION_PICK);
@@ -397,6 +372,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
     }
 
+    //pick from camera
     private void pickFromCamera() {
 
         //get image from camera
@@ -411,7 +387,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         System.out.println("image__" + imageUri);
     }
 
-
+    //check storage permission
     private boolean checkStoragePermission() {
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == (PackageManager.PERMISSION_GRANTED);
@@ -419,12 +395,14 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
     }
 
+    //get sorage permission
     private void requestStoragePermission() {
 
         ActivityCompat.requestPermissions(this, storagePermissions, STORAGE_REQUEST_CODE);
 
     }
 
+    //check cammera permission
     private boolean checkCmaraPermission() {
 
         boolean result = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
@@ -436,6 +414,7 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
         return result && resulti;
     }
 
+    //get cammera permision
     private void requestCameraPermission() {
         ActivityCompat.requestPermissions(this, cameraPermissions, CAMERA_REQUEST_CODE);
     }
@@ -519,9 +498,10 @@ public class Add_assignment_form_teacher extends AppCompatActivity {
 
 
 
-
+    //go back
     public void clickBack(View view) {
         Intent intentback = new Intent(this, makeAssingment.class);
+        intentback.putExtra("emailT", teacherEmail);
         startActivity(intentback);
     }
 }

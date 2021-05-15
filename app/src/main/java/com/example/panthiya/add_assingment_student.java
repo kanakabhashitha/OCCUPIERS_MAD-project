@@ -40,7 +40,7 @@ public class add_assingment_student extends AppCompatActivity {
     private EditText aNumberEt, aSubjectEt, aDeadLinEd, aDescriptionEt;
     Button saveInfo;
 
-    private String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp;
+    private String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp, studentID;
     private DatabaseHelperMKASG dbHelper;
 
 
@@ -86,12 +86,11 @@ public class add_assingment_student extends AppCompatActivity {
         updateTimeStamp = intent.getStringExtra("UPDATE_TIMESTAMP");
 
 
-
         aNumberEt.setText(number);
         aSubjectEt.setText(subject);
         aDeadLinEd.setText(deadLine);
         aDescriptionEt.setText(description);
-        //aImageView.setImageURI(imageUri);
+        aImageView.setImageURI(imageUri);
 
 
         cameraPermissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -99,6 +98,9 @@ public class add_assingment_student extends AppCompatActivity {
 
         //initiate database object in main funtion
         dbHelper = new DatabaseHelperMKASG(this);
+
+        //catch forigen key
+        //studentID = getIntent().getStringExtra("studentSid");
 
         aImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +117,8 @@ public class add_assingment_student extends AppCompatActivity {
                 //click the save button insert data to db
                 getData();
 
-                startActivity(new Intent(add_assingment_student.this, view_assignment_student_view.class));
+                Intent intent = new Intent(add_assingment_student.this,view_assignment_student_view.class);
+                startActivity(intent);
                 Toast.makeText(add_assingment_student.this, "Add Successfull", Toast.LENGTH_SHORT).show();
 
             }
@@ -146,6 +149,7 @@ public class add_assingment_student extends AppCompatActivity {
         deadLine = "" + aDeadLinEd.getText().toString().trim();
         description = "" + aDescriptionEt.getText().toString().trim();
         //timeStamp = "" + System.currentTimeMillis();
+
 
         dbHelper.insertInfo_2(
                     "" + number,
