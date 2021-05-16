@@ -22,7 +22,7 @@ public class preview_assingment extends AppCompatActivity {
     ImageButton pri_image;
 
 
-    private String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp;
+    private static String id, number, subject, deadLine, description, addTimeStamp, updateTimeStamp, image, timeStamp, atfk;
     private DatabaseHelperMKASG dbHelper;
 
     private Uri imageUri;
@@ -53,8 +53,13 @@ public class preview_assingment extends AppCompatActivity {
 
         saveInfo = findViewById(R.id.save_btn);
 
+        //initiate database object in main funtion
+        dbHelper = new DatabaseHelperMKASG(this);
+
+
         Intent intent = getIntent();
         id = intent.getStringExtra("ID");
+        atfk = intent.getStringExtra("ATFK_ID");
         subject = intent.getStringExtra("SUBJECT");
         number = intent.getStringExtra("NUMBER");
         deadLine = intent.getStringExtra("DEADLINE");
@@ -85,7 +90,8 @@ public class preview_assingment extends AppCompatActivity {
 
     }
     public void clickBack(View view) {
-        Intent intentback = new Intent(this, makeAssingment.class);
+        Intent intentback = new Intent(preview_assingment.this, makeAssingment.class);
+        intentback.putExtra("emailT", atfk);
         startActivity(intentback);
     }
 }

@@ -50,6 +50,7 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
         Model_mkasg model = arrayList.get(position);
         //get for view
         final String id = model.getId();
+        final String atfk = model.getAtfk();
         final String image = model.getImage();
         final String subject = model.getSubject();
         final String number = model.getNumber();
@@ -57,6 +58,7 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
         final String description = model.getDescription();
         final String addTimeStamp = model.getAddTimeStamp();
         final String updateTimeStamp = model.getUpdateTimestamp();
+        System.out.print("foiring__"+atfk);
 
         //set views
         holder.assignmentImage.setImageURI(Uri.parse(image));
@@ -73,6 +75,7 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
 
                 Intent intent = new Intent(context, preview_assingment.class );
                 intent.putExtra("ID", id);
+                intent.putExtra("ATFK_ID", atfk);
                 intent.putExtra("SUBJECT", subject );
                 intent.putExtra("NUMBER", number);
                 intent.putExtra("DEADLINE", deadLine);
@@ -92,6 +95,7 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
             public void onClick(View v) {
                 editDialog(
                         ""+position,
+                        ""+atfk,
                         ""+id,
                         ""+subject,
                         ""+number,
@@ -119,7 +123,7 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
 
 
 
-    private void editDialog(String position, String id, String subject, String number, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
+    private void editDialog(String position, String atfk, String id, String subject, String number, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Update");
@@ -133,6 +137,7 @@ public class Adapter_mkasg extends RecyclerView.Adapter<Adapter_mkasg.Holder>{
 
                 Intent intent = new Intent(context, edit_assingment.class );
                 intent.putExtra("ID", id);
+                intent.putExtra("ATFK_ID", atfk);
                 intent.putExtra("SUBJECT", subject );
                 intent.putExtra("NUMBER", number);
                 intent.putExtra("DEADLINE", deadLine);

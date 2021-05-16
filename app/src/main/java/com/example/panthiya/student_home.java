@@ -25,7 +25,7 @@ public class student_home extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     TextView studentReg;
     private DatabaseHelperMKASG dbHelper;
-    private static String studentID;
+    private static String studentID, teacherEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,7 @@ public class student_home extends AppCompatActivity {
         imageSlider.setImageList(slideModels, true);
 
         studentID = getIntent().getStringExtra("studentSid");
+        teacherEmail = getIntent().getStringExtra("emailT");
 
 
     }
@@ -117,7 +118,7 @@ public class student_home extends AppCompatActivity {
         //set title
         builder.setTitle("Logout");
         //set massage
-        builder.setMessage("Are you sure, you want to logout ?");
+        builder.setMessage("Are you sure, you want to Exit ?");
         //positive yes button
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
@@ -143,6 +144,36 @@ public class student_home extends AppCompatActivity {
 
     }
 
+
+    public void clickswitchTouser(View view) {
+        //initializ alaert dialog
+        AlertDialog.Builder builder =  new AlertDialog.Builder(student_home.this);
+        //set title
+        builder.setTitle("Logout");
+        //set massage
+        builder.setMessage("Are you sure, you want to logout ?");
+        //positive yes button
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(student_home.this, login_page.class);
+                startActivity(intent);
+            }
+        });
+
+        //Negetive no button
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //dismiss dialog
+                dialog.dismiss();
+            }
+        });
+
+        //show dialog
+        builder.show();
+
+    }
 
 
     public static void redirectActivity(Activity activity, Class aClass) {
@@ -173,13 +204,14 @@ public class student_home extends AppCompatActivity {
 
     public void clickMyAssignmentLog(View view) {
         Intent intentadd_my_assignment_log = new Intent(this,my_assignment_log.class);
+        intentadd_my_assignment_log.putExtra("studentSid", studentID);
         startActivity(intentadd_my_assignment_log);
     }
 
     public void clickViewMarkAssignment(View view) {
 
         Intent intentadd_view_marks_student = new Intent(this,view_marks_student.class);
-        intentadd_view_marks_student.putExtra("studentId",studentID);
+        intentadd_view_marks_student.putExtra("studentSid", studentID);
         startActivity(intentadd_view_marks_student);
     }
 

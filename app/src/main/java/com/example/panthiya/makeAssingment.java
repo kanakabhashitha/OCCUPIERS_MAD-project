@@ -38,14 +38,17 @@ public class makeAssingment extends AppCompatActivity {
 
 
         mRecyclerView = findViewById(R.id.recylceView);
-        databaseHelper = new DatabaseHelperMKASG(this);
+
         //db inisialize
+        databaseHelper = new DatabaseHelperMKASG(this);
 
         teacherEmail = getIntent().getStringExtra("emailT");
+        System.out.println("fis__"+teacherEmail);
 
         showRercord();
 
         fab = findViewById(R.id.addFabButton);
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +58,7 @@ public class makeAssingment extends AppCompatActivity {
                 //startActivity(new Intent(MainActivity.this, AddRecordActivity.class));
 
                 Intent intent = new Intent(makeAssingment.this, Add_assignment_form_teacher.class);
+                intent.putExtra("emailT", teacherEmail);
                 intent.putExtra("EditMode", false);
                 intent.putExtra("ViewMode", false);
                 startActivity(intent);
@@ -66,7 +70,7 @@ public class makeAssingment extends AppCompatActivity {
 
     private void showRercord() {
 
-        Adapter_mkasg adapter = new Adapter_mkasg(makeAssingment.this, databaseHelper.getAllData(ConstantsMKASG.A_ADD_TIMESTAMP + " DESC"));
+        Adapter_mkasg adapter = new Adapter_mkasg(makeAssingment.this, databaseHelper.getAllData(teacherEmail));
         //because last add record is show on top
         mRecyclerView.setAdapter(adapter);
     }

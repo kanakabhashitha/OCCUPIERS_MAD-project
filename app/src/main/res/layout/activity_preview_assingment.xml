@@ -58,7 +58,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="number"
+                            android:text="Number"
                             android:textColor="@color/white"
                             android:padding="10sp"
                             android:textStyle="bold"
@@ -70,7 +70,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="subject"
+                            android:text="Subject"
                             android:textColor="@color/white"
                             android:padding="10sp"
                             android:textStyle="bold"
@@ -81,7 +81,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="deadLine"
+                            android:text="DeadLine"
                             android:textColor="@color/white"
                             android:padding="10sp"
                             android:textStyle="bold"
@@ -188,7 +188,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="upload date"
+                            android:text="Upload date"
                             android:textColor="@color/white"
                             android:padding="10sp"
                             android:textStyle="bold"
@@ -200,7 +200,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="update date"
+                            android:text="Update date"
                             android:textColor="@color/white"
                             android:padding="10sp"
                             android:textStyle="bold"

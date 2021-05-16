@@ -53,12 +53,7 @@ public class studentLoginFragment extends Fragment {
                 System.out.println("pw__"+checkStudentUserName);
 
 
-//                Intent intent = new Intent(getActivity(),student_home.class);
-//                System.out.println("sE___"+password);
-//                intent.putExtra("studentSid", uid);
-//                startActivity(intent);
-
-                if (checkStudentUserName == true){
+               if (checkStudentUserName == true){
 
                     Intent intent = new Intent(getActivity(),student_home.class);
                     System.out.println("sE___"+password);

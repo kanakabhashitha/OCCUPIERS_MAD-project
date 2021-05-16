@@ -2,10 +2,11 @@ package com.example.panthiya;
 
 public class Model_mkasg {
 
-    String id, image, number, subject, deadLine, description, addTimeStamp, updateTimestamp;
+    String id, atfk, image, number, subject, deadLine, description, addTimeStamp, updateTimestamp;
 
-    public Model_mkasg(String id, String image, String number, String subject, String deadLine, String description, String addTimeStamp, String updateTimestamp) {
+    public Model_mkasg(String id, String atfk, String image, String number, String subject, String deadLine, String description, String addTimeStamp, String updateTimestamp) {
         this.id = id;
+        this.atfk = atfk;
         this.image = image;
         this.number = number;
         this.subject = subject;
@@ -21,6 +22,14 @@ public class Model_mkasg {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAtfk() {
+        return atfk;
+    }
+
+    public void setAtfk(String atfk) {
+        this.atfk = atfk;
     }
 
     public String getImage() {

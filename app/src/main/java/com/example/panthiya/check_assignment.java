@@ -12,6 +12,7 @@ public class check_assignment extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     DatabaseHelperMKASG databaseHelper;
+    private static String teacherEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class check_assignment extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recylceView_t2);
         databaseHelper = new DatabaseHelperMKASG(this);
 
+        teacherEmail = getIntent().getStringExtra("emailT");
 
         showRercord();
 
@@ -53,6 +55,7 @@ public class check_assignment extends AppCompatActivity {
 
     public void clickBack(View view) {
         Intent intentback = new Intent(this, main_activity.class);
+        intentback.putExtra("emailT", teacherEmail);
         startActivity(intentback);
     }
 }

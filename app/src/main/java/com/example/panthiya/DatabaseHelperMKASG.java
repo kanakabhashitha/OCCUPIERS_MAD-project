@@ -42,11 +42,12 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
     //insert information
 
-    public long insertInfo(String number, String subject, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
+    public long insertInfo(String number, String atfk, String subject, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        values.put(ConstantsMKASG.ATFK_ID, atfk);
         values.put(ConstantsMKASG.A_NUMBER, number);
         values.put(ConstantsMKASG.A_SUBJECT, subject);
         values.put(ConstantsMKASG.A_DEADLINE, deadLine);
@@ -64,11 +65,12 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
     //update information techers table
 
-    public void updateInfo(String id, String number, String subject, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
+    public void updateInfo(String id, String atfk, String number, String subject, String deadLine, String description, String image, String addTimeStamp, String updateTimeStamp) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        values.put(ConstantsMKASG.ATFK_ID, atfk);
         values.put(ConstantsMKASG.A_NUMBER, number);
         values.put(ConstantsMKASG.A_SUBJECT, subject);
         values.put(ConstantsMKASG.A_DEADLINE, deadLine);
@@ -113,20 +115,16 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
     }
 
 
-
-
-
-
     //arryList table 1
-    public ArrayList<Model_mkasg> getAllData(String orderBy){
+    public ArrayList<Model_mkasg> getAllData(String atfk){
 
         ArrayList<Model_mkasg> arrayList = new ArrayList<>();
 
         //query for select all info in databse
-        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME + " ORDER BY " + orderBy;
-
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ConstantsMKASG.TABLE_NAME + " WHERE TFK_ID = ? " + " ORDER BY " + ConstantsMKASG.T_ADD_TIMESTAMP + " DESC",
+                new String[]{atfk});
+
 
         //select all info from databes new gte the data from column
         if(cursor.moveToNext()){
@@ -136,6 +134,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
                 Model_mkasg model = new Model_mkasg(
 
                         ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.A_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.ATFK_ID)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_IMAGE)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_NUMBER)),
                         ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_SUBJECT)),
@@ -154,6 +153,41 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
     }
 
 
+    //arryList table 1 for student viwe for assingment
+    public ArrayList<Model_mkasg> getAllData_for_student_view(String orderBy){
+
+        ArrayList<Model_mkasg> arrayList = new ArrayList<>();
+
+        //query for select all info in databse
+        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME + " ORDER BY " + orderBy;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //select all info from databes new gte the data from column
+        if(cursor.moveToNext()){
+
+            do{
+
+                Model_mkasg model = new Model_mkasg(
+
+                        ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.A_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.ATFK_ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_IMAGE)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_NUMBER)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_SUBJECT)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_DEADLINE)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_DESCRIPTION)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_ADD_TIMESTAMP)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.A_UPDATE_TIMESTAMP))
+                );
+
+                arrayList.add(model);
+            } while(cursor.moveToNext());
+        }
+
+        db.close();
+        return arrayList;
+    }
 
 
 
@@ -624,7 +658,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         ArrayList<Model_TM> arrayList = new ArrayList<>();
 
         //query for select all info in databse
-        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " ORDER BY " + orderBy;
+        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " GROUP BY " + orderBy;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -652,6 +686,42 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         db.close();
         return arrayList;
     }
+
+  /*  public ArrayList<Model_TM> getAStudentRecord(String studentId){
+
+        ArrayList<Model_TM> arrayList = new ArrayList<>();
+
+        //query for select all info in databse
+        // String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " ORDER BY " + orderBy;
+        // Select specific student records
+        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " WHERE " + ConstantsMKASG.STUDENTID + " = "+ studentId;
+        System.out.println("selectQuery"+selectQuery);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //select all info from databes new gte the data from column
+        if(cursor.moveToNext()){
+
+            do{
+
+                Model_TM model = new Model_TM(
+
+                        ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.ASSIGNMENT)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.STUDENTID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.NAME)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SUBJECT)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.MARKS)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.COMMENT))
+                );
+
+                arrayList.add(model);
+            } while(cursor.moveToNext());
+        }
+
+        db.close();
+        return arrayList;
+    }*/
 
 
     //update infomation table5
