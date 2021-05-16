@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class MarksSummaryActivity extends AppCompatActivity {
 
     DatabaseHelperMKASG databaseHelper;
+
     ArrayList<Model_TM> marksOriginal;
     teacherReportAdapter adapter;
     RecyclerView mRecyclerView;

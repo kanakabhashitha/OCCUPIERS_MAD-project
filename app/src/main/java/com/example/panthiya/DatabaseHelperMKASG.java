@@ -742,6 +742,42 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         db.close();
 
     }
+    public ArrayList<Model_TM> getAStudentRecord(String studentId){
+
+        ArrayList<Model_TM> arrayList = new ArrayList<>();
+
+        //query for select all info in databse
+        // String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " ORDER BY " + orderBy;
+        // Select specific student records
+        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " WHERE " + ConstantsMKASG.STUDENTID + " = "+ studentId;
+        System.out.println("selectQuery"+selectQuery);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //select all info from databes new gte the data from column
+        if(cursor.moveToNext()){
+
+            do{
+
+                Model_TM model = new Model_TM(
+
+                        ""+cursor.getInt(cursor.getColumnIndex(ConstantsMKASG.ID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.ASSIGNMENT)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.STUDENTID)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.NAME)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.SUBJECT)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.MARKS)),
+                        ""+cursor.getString(cursor.getColumnIndex(ConstantsMKASG.COMMENT))
+                );
+
+                arrayList.add(model);
+            } while(cursor.moveToNext());
+        }
+
+        db.close();
+        return arrayList;
+    }
+
 
     //table delete_5
     public void deleteInfo_table_5(String id){

@@ -33,6 +33,16 @@ public class Adapter_TM extends RecyclerView.Adapter<Adapter_TM.Holder> {
 
     }
 
+    // method for filtering our recyclerview items.
+    public void filterList(ArrayList<Model_TM> filterllist) {
+        // below line is to add our filtered
+        // list in our course array list.
+        arrayList = filterllist;
+        // below line is to notify our adapter
+        // as change in recycler view data.
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -70,18 +80,18 @@ public class Adapter_TM extends RecyclerView.Adapter<Adapter_TM.Holder> {
             }
         });
 
-  holder.imageView.setOnClickListener(new View.OnClickListener() {
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 UpdateDetails(
-                  ""+position,
-                  ""+id,
-                  ""+assignment,
-                  ""+studentid,
-                  ""+name,
-                  ""+subject,
-                  ""+mark,
-                  ""+comment
+                        ""+position,
+                        ""+id,
+                        ""+assignment,
+                        ""+studentid,
+                        ""+name,
+                        ""+subject,
+                        ""+mark,
+                        ""+comment
                 );
             }
         });
@@ -89,7 +99,7 @@ public class Adapter_TM extends RecyclerView.Adapter<Adapter_TM.Holder> {
 
 
 
-    //when long press on item, show and alert dialog for delete
+        //when long press on item, show and alert dialog for delete
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -105,9 +115,9 @@ public class Adapter_TM extends RecyclerView.Adapter<Adapter_TM.Holder> {
 
 
 
-}
+    }
 
-  private void DeleteItem(final String id) {
+    private void DeleteItem(final String id) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete");

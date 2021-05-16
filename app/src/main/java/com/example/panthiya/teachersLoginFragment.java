@@ -70,7 +70,7 @@ public class teachersLoginFragment extends Fragment {
 
                     emailEt.setText("");
                     passwordET.setText("");
-               }
+                }
 
             }
 
