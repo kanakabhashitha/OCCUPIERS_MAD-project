@@ -152,6 +152,7 @@ public class teachers_record_book_add extends AppCompatActivity {
 
         return true;
     }
+    //insert data
     private void getData() {
         date = "" + tr_date.getText().toString().trim();
         subject = "" + tr_subject.getText().toString().trim();

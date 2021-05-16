@@ -72,6 +72,7 @@
                         android:background="@drawable/background1"
                         android:hint="DD/MM/YYYY"
                         android:inputType="number"
+                        android:textSize="22dp"
                         android:id="@+id/tr_date"
                         android:textAlignment="center" />
                 </LinearLayout>
@@ -98,6 +99,7 @@
                         android:background="@drawable/background1"
                         android:hint="@string/Subject_hint_edit"
                         android:inputType="textAutoCorrect|text"
+                        android:textSize="22dp"
                         android:id="@+id/tr_subject"
                         android:textAlignment="center" />
                 </LinearLayout>
@@ -125,6 +127,7 @@
                         android:hint="Enter Title"
                         android:id="@+id/tr_titel"
                         android:inputType="textAutoCorrect|text"
+                        android:textSize="22dp"
                         android:textAlignment="center" />
                 </LinearLayout>
                 <LinearLayout
@@ -149,6 +152,7 @@
                         android:layout_height="70dp"
                         android:background="@drawable/background1"
                         android:hint="Enter learning outcome"
+                        android:textSize="22dp"
                         android:id="@+id/tr_outcome"
                         android:textAlignment="center" />
                 </LinearLayout>
@@ -176,6 +180,7 @@
                         android:hint="Enter done points"
                         android:id="@+id/tr_done_points"
                         android:inputType="textAutoCorrect|number|text"
+                        android:textSize="22dp"
                         android:textAlignment="center" />
                 </LinearLayout>
                 <LinearLayout
@@ -202,6 +207,7 @@
                         android:hint="Enter expected points"
                         android:id="@+id/tr_expected_pont"
                         android:inputType="textAutoCorrect|number|text"
+                        android:textSize="22dp"
                         android:textAlignment="center" />
                 </LinearLayout>
             </LinearLayout>

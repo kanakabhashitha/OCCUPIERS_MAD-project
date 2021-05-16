@@ -58,7 +58,16 @@ public class my_note_student extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(validateFields()) {
-                    generateMarks();
+                    try{
+                        cur_ava = Float.parseFloat("" + c_avarage.getText().toString().trim());
+                        tar_ava = Float.parseFloat("" + t_avarage.getText().toString().trim());
+                        cur_sub = Integer.parseInt("" + c_subjects.getText().toString().trim());
+                        ava_sub = Integer.parseInt("" + a_subjects.getText().toString().trim());
+                        generateMarks(cur_ava, tar_ava, cur_sub, ava_sub);
+                    }catch(NullPointerException e){
+                        System.out.println(e);
+                    }
+
                 }
             }
         });
@@ -74,26 +83,15 @@ public class my_note_student extends AppCompatActivity {
                 a_subjects.setText("");
             }
         });
-
-
-
-
-
     }
 
+    public Float generateMarks(Float current_ava, Float target_ava, int current_sub, int average_sub){
 
-
-    private void generateMarks(){
-        cur_ava = Float.parseFloat("" + c_avarage.getText().toString().trim());
-        tar_ava = Float.parseFloat("" + t_avarage.getText().toString().trim());
-        cur_sub = Integer.parseInt("" + c_subjects.getText().toString().trim());
-        ava_sub = Integer.parseInt("" + a_subjects.getText().toString().trim());
-
-        float currentMarks = cur_ava * cur_sub;
-        float expectedMarks = tar_ava * (ava_sub + cur_sub);
+        float currentMarks = current_ava * current_sub;
+        float expectedMarks = target_ava * (average_sub + current_sub);
 
         float marksDiff = expectedMarks - currentMarks;
-        float marksForSubject = marksDiff / ava_sub;
+        float marksForSubject = marksDiff / average_sub;
 
         if(marksForSubject < 100){
             //Toast.makeText(MainActivity.this, "Marks for Subject : " + String.valueOf(marksForSubject), Toast.LENGTH_SHORT).show();
@@ -102,9 +100,9 @@ public class my_note_student extends AppCompatActivity {
             //Toast.makeText(MainActivity.this, "You cannot acheive this avarage", Toast.LENGTH_SHORT).show();
             textLabel.setText("You cannot acheive this avarage");
         }
-
-
         System.out.println("Marks for subject : " + String.valueOf(marksForSubject));
+        return marksForSubject;
+
     }
 
     private boolean validateFields(){

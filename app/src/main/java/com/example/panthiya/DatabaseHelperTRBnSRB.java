@@ -42,6 +42,8 @@ public class DatabaseHelperTRBnSRB extends SQLiteOpenHelper {
         values.put(ConstantsTRBnSRB.T_ADD_TIMESTAMP, tr_addTimes);
         values.put(ConstantsTRBnSRB.T_UPDATE_TIMESTAMP, tr_updateTimes);
 
+        //insert query
+
         long id =  db.insert(ConstantsTRBnSRB.TRB_TABLE, null, values);
         db.close();
         return id;

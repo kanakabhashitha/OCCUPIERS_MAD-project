@@ -97,7 +97,8 @@ public class Edit_teacher_record_book extends AppCompatActivity {
                 if(validateData()){
                 getData();
                 startActivity(new Intent(Edit_teacher_record_book.this, TeacherRecordBook.class));
-                Toast.makeText(Edit_teacher_record_book.this, "Add Successfull", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Edit_teacher_record_book.this, "Edit Successfull", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Edit_teacher_record_book.this, "Edit successful", Toast.LENGTH_SHORT).show();
                 }
             }
         });
