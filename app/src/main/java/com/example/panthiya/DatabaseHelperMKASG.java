@@ -593,6 +593,11 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
     }
 
 
+
+
+    ///////////////////////////////////////////////maduka///////////////////////////////////////////////////////////////
+
+
     //maduka workspace
     //table name5
 
@@ -624,7 +629,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         ArrayList<Model_TM> arrayList = new ArrayList<>();
 
         //query for select all info in databse
-        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " ORDER BY " + orderBy;
+        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " GROUP BY " + orderBy;
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -679,7 +684,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         //query for select all info in databse
         // String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " ORDER BY " + orderBy;
         // Select specific student records
-        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " WHERE " + ConstantsMKASG.STUDENTID + " = "+ studentId;
+        String selectQuery = "SELECT * FROM " + ConstantsMKASG.TABLE_NAME_5 + " WHERE " + ConstantsMKASG.STUDENTID + " = '"+studentId +"'";
         System.out.println("selectQuery"+selectQuery);
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

@@ -51,8 +51,9 @@ public class MarksSummaryActivity extends AppCompatActivity {
                 mRecyclerView.setAdapter(adapter);
 
                 for (Model_TM mark : marksOriginal) {
-                    totalMarks += Integer.parseInt(mark.marks);
-                    totalSubjs ++;
+                   // totalMarks += Integer.parseInt(mark.marks);
+                    totalMarks=addMarks(totalMarks,Integer.parseInt(mark.marks));
+                    totalSubjs++;
                 }
 
                 System.out.println("totalMarks"+totalMarks);
@@ -61,7 +62,7 @@ public class MarksSummaryActivity extends AppCompatActivity {
                 tot.setText(String.valueOf(totalMarks));
 
                 //find average
-                averageMarks = totalMarks * totalSubjs  / 100.0;
+                averageMarks = multiplicationMarks(totalMarks ,totalSubjs)  / 100.0;
                 avg.setText(String.valueOf(averageMarks).concat("%"));
 
             } catch (Exception d) {
@@ -76,4 +77,10 @@ public class MarksSummaryActivity extends AppCompatActivity {
         Intent intentback = new Intent(this, addMark.class);
         startActivity(intentback);
     }
+
+
+
+    protected int addMarks(int x, int y){return x + y;}
+    protected int multiplicationMarks(int x, int y){return x * y;}
+
 }

@@ -110,7 +110,7 @@ public class ConstantsMKASG {
             + SR_UPDATE_TIMESTAMP + " TEXT"
             + ");";
 
-    //maduka workspace
+    //maduka workspace/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //db table 5
     public static final String TABLE_NAME_5 = "Marks_Details";

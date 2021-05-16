@@ -76,7 +76,7 @@ public class addMark extends AppCompatActivity {
 
     public void showRercord() {
 
-        Adapter_TM adapter = new Adapter_TM(addMark.this, databaseHelper.getAllData_table_5(ConstantsMKASG.ID + " DESC"));
+        Adapter_TM adapter = new Adapter_TM(addMark.this, databaseHelper.getAllData_table_5(ConstantsMKASG.ID ));
         recyclerView.setAdapter(adapter);
     }
 
