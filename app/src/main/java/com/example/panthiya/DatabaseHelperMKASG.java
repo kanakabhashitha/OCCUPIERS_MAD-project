@@ -687,7 +687,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
         return arrayList;
     }
 
-    public ArrayList<Model_TM> getAStudentRecord(String studentId){
+  /*  public ArrayList<Model_TM> getAStudentRecord(String studentId){
 
         ArrayList<Model_TM> arrayList = new ArrayList<>();
 
@@ -721,7 +721,7 @@ public class DatabaseHelperMKASG extends SQLiteOpenHelper {
 
         db.close();
         return arrayList;
-    }
+    }*/
 
 
     //update infomation table5
